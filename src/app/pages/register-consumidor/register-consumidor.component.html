@@ -1,0 +1,210 @@
+<div class="container-fluid">
+    
+        <div class="row">
+    
+            <!-- Div propaganda -->
+            <div class="col-sm-5 text-center login-container-propaganda login-bg-primary">
+                    <div class='slide1'>
+                            <br><br><br><br>
+                            <div>
+                                <img class="login-logotipo" src="../../../assets/img/logo/logo-completo-branco.png">
+                            </div>
+                            <br><br><br><br><br><br><br><br><br><br><br><br><br>
+                            
+                            <h1 class="destaque-white">
+                                SMARKET o mercado que faz toda diferença!
+                            </h1>
+                    </div>
+                    <div class='slide2'>
+                            <br><br><br><br>
+                            <div>
+                                <img class="login-logotipo" src="../../../assets/img/logo/logo-completo-branco.png">
+                            </div>
+                            <br><br><br><br><br><br><br><br><br><br><br><br><br>
+                            
+                            <h1 class="destaque-white">
+                                SMARKET o mercado que faz toda diferença!
+                            </h1>
+                    </div> 
+                    <div class='slide3'>
+                            <br><br><br><br>
+                            <div>
+                                <img class="login-logotipo" src="../../../assets/img/logo/logo-completo-branco.png">
+                            </div>
+                            <br><br><br><br><br><br><br><br><br><br><br><br><br>
+                            
+                            <h1 class="destaque-white">
+                                SMARKET o mercado que faz toda diferença!
+                            </h1>
+                    </div>  
+            </div>
+    
+    
+            <!-- Div formulario -->
+            <div class="col-sm-5 login-container-formulario offset-sm-1 text-center">
+    
+                <h2 class="registro">Registre-se no SMARKETapp</h2>
+
+                <hr/>
+
+                <a routerLink="/login-consumidor" class="transition"><strong>Já possui cadastro? Faça seu Login!</strong></a>
+    
+                <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="text-left mt-4">
+    
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="nome">Nome</label>
+                                <input [formControl]="nome" class="form-control validation-field" type="text" name="nome" id="nome">
+                                <small class="text-danger" *ngIf="form.get('nome').touched">
+                                                                    <span *ngIf="form.get('nome').hasError('required')">Nome obrigatório</span>
+                                                                    <span *ngIf="form.get('nome').hasError('minlength')">Minimo 3 caracteres</span>                            
+                                                                    <span *ngIf="form.get('nome').hasError('maxlength')">Máximo 150 caracteres</span>
+                                                                </small>
+                            </div>
+                        </div>
+    
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="sobrenome">Sobrenome</label>
+                                <input [formControl]="sobrenome" class="form-control validation-field" type="text" name="sobrenome" id="sobrenome">
+                                <small class="text-danger" *ngIf="form.get('sobrenome').touched">
+                                                                    <span *ngIf="form.get('sobrenome').hasError('required')">Sobrenome obrigatório</span>
+                                                                    <span *ngIf="form.get('sobrenome').hasError('minlength')">Minimo 3 caracteres</span>                            
+                                                                    <span *ngIf="form.get('sobrenome').hasError('maxlength')">Máximo 150 caracteres</span>
+                                                                </small>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <label for="tipoTelefone">Tipo de Telefone</label>
+                                <select [formControl]="tipoTelefone" class="form-control validation-field" name="tipoTelefone" id="tipoTelefone" (change)="setMaskFone()">
+                                                                    <option value="">Selecione</option>
+                                                                    <option *ngFor="let tipoTelefone of tiposTelefone" 
+                                                                    [value]="tipoTelefone.tipo_telefone_id">
+                                                                    {{tipoTelefone.tipo_telefone_descricao}}</option>
+                                                            </select>
+                                <small class="text-danger" *ngIf="form.get('tipoTelefone').touched">
+                                                                <span *ngIf="form.get('tipoTelefone').hasError('required')">Tipo de telefone obrigatório</span>
+                                                            </small>
+                            </div>
+                        </div>
+    
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="ddd">DDD</label>
+                                <input [formControl]="ddd" class="form-control validation-field" placeholder="(XX)" type="text" specialCharacters="false"
+                                    name="ddd" id="ddd" mask="(00)">
+                                <small class="text-danger" *ngIf="form.get('ddd').touched">
+                                                                    <span *ngIf="form.get('ddd').hasError('required')">DDD obrigatório</span>
+                                                                    <span *ngIf="form.get('ddd').hasError('invalidDDD')">DDD inválido</span>
+                                                                </small>
+                            </div>
+                        </div>
+    
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="telefone">Telefone</label>
+                                <input [formControl]="telefone" class="form-control validation-field" name="telefone" id="telefone" [placeholder]="maskFone.placeholder"
+                                    type="text" specialCharacters="false" [mask]="maskFone.mask">
+                                <small class="text-danger" *ngIf="form.get('telefone').touched">
+                                                                    <span *ngIf="form.get('telefone').hasError('required')">Telefone obrigatório</span>
+                                                                    <span *ngIf="form.get('telefone').hasError('invalidTelefone')">Telefone inválido</span>
+                                                                </small>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input [formControl]="email" class="form-control validation-field" type="text" name="email" id="email">
+                                <small class="text-danger" *ngIf="form.get('email').touched">
+                                                                <span *ngIf="form.get('email').hasError('required')">Email obrigatório</span>
+                                                                <span *ngIf="form.get('email').hasError('invalidEmail')">Email inválido</span>
+                                                            </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="password">Senha</label>
+                                <input [formControl]="password" class="form-control validation-field password" [type]="passwordType" minlength="6" name="password"
+                                    id="password">
+                                <div id="senha" (mouseenter)="setTypePassword('text')" (mouseout)="setTypePassword('password')"></div>
+                                <small class="text-danger" *ngIf="form.get('password').touched">
+                                                                <span *ngIf="form.get('password').hasError('required')">Senha obrigatória</span>
+                                                                <span *ngIf="form.get('password').hasError('minlength')">Mínimo 6 caracteres</span>
+                                                                <span *ngIf="form.get('password').hasError('minlength')">Máximo 20 caracteres</span>
+                                                            </small>
+                            </div>
+                        </div>
+    
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirme sua Senha</label>
+                                <input [formControl]="confirmPassword" class="form-control validation-field password" [type]="passwordConfirmType" name="confirmPassword"
+                                    id="confirmPassword">
+                                <div id="senha" (mouseenter)="setTypePasswordConfirm('text')" (mouseout)="setTypePasswordConfirm('password')"></div>
+                                <small class="text-danger" *ngIf="form.get('confirmPassword').touched">
+                                                                <span *ngIf="form.get('confirmPassword').hasError('required')">Confirmação de senha obrigatória</span>
+                                                                <span *ngIf="form.get('confirmPassword').hasError('mismatchedPasswords')">As senhas não correspondem</span>
+                                                            </small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                    <label class="custom-control custom-checkbox">
+                                            <input class="custom-control-input checkbox-primary" type="checkbox" (change)="confirmarTermoUso()">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">Ao se cadastrar você concordou com os nossos<a href="javascript:void(0);"
+                                                class="transition terms" data-toggle="modal" data-target="#default-modal"> <strong>termos e condições.</strong></a></span>
+                                        </label>
+                                        <br/>
+                                <small class="text-danger" *ngIf="confirmTermUso.validate &&  !confirmTermUso.status">
+                                                                <span>Confirmação do termo de uso obrigatória!</span>
+                                                            </small>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="modal fade" id="default-modal" tabindex="-1" role="dialog" aria-labelledby="modal-label" style="display: none;">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="modal-label">TERMOS DE SERVIÇO</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div [innerHTML]="termoUso">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <button class="btn btn-block" type="submit">Cadastrar</button>
+                    </div>
+    
+                </form>
+
+                <div [hidden]="erros.length == 0" *ngFor = "let erro of erros; index as i" class="alert alert-danger" role="alert">
+                    <button type="button" class="close" (click)="closeAlert(i)">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>{{erro.item}}</strong> {{erro.descricao}}
+                </div>
+    
+            </div>
+        </div>
+     
+    </div>

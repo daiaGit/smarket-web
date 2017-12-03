@@ -1,0 +1,72 @@
+<div class="container-fluid categoria-smarket">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <img class="icone-form-header pb-2" src="assets/img/icone/icones-adm_produto-crate.svg">
+            <h2 class="title-cadastro pb-2">Minhas Categorias</h2>
+        </div>
+    </div>
+
+    <div class="row card-cadastro mb-4">
+
+        <div class="col-sm-12">
+            <div class="form-group">
+                <div class="input-group box-shadow">
+                    <div class="input-group-addon border-top-0 border-left-0 border-bottom-0 rounded-0">
+                        <i class="fa fa-search"></i>
+                    </div>
+                    <input type="text" [(ngModel)]="searchText" placeholder="Buscar categoria" class="form-control border-0">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <button type="button" class="btn btn-primary" (click)="cadastrarCategoria()">
+                <i class="fa fa-user"></i>&nbsp;&nbsp;Adicionar Categoria
+            </button>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive bg-white box-shadow">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Categoria</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let categoria of categorias | CategoriaSearchPipe : searchText | paginate: { itemsPerPage: 10, currentPage: p }">
+                            <td class="align-middle">
+                                <img *ngIf="!categoria.categoria_img_b64" class="rounded-circ  le" src="assets/img/users/default-user.jpg" width="40">
+                                <img *ngIf="categoria.categoria_img_b64" class="d-flex mr-3" [src]="categoria.categoria_img_b64" width="60">
+                            </td>
+                            <td class="align-middle text-truncate">{{categoria.categoria_descricao}}</td>
+                            <td class="align-middle text-truncate"></td>
+                            <td class="align-middle">
+                                <button class="btn btn-secondary btn-sm">
+                                    <i class="fa fa-pencil fa-2x"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="bg-white text-center">
+                <pagination-controls autoHide="true" (pageChange)="p = $event" maxSize="10"></pagination-controls>
+            </div>
+        </div>
+    </div>
+
+
+</div>

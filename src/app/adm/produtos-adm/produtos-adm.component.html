@@ -1,0 +1,141 @@
+<div class="container-fluid produtos-adm">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <img class="icone-form-header pb-2" src="assets/img/icone/icones-adm_produto-crate.svg">
+            <h2 class="title-cadastro pb-2">Meus Produtos</h2>
+        </div>
+    </div>
+
+    <div class="col-sm-12">
+        <div [hidden]="erros.length == 0" *ngFor="let erro of erros; index as i" class="alert alert-danger" role="alert">
+            <button type="button" class="close" (click)="closeAlert(i)">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>{{erro.item}}</strong>
+            <br/> {{erro.descricao}}
+        </div>
+    </div>
+
+    <div class="col-sm-12">
+        <div [hidden]="sucessos.length == 0" *ngFor="let sucesso of sucessos; index as i" class="alert alert-success" role="alert">
+            <button type="button" class="close" (click)="closeAlertSucesso(i)">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>{{sucesso.item}}</strong>
+            <br/> {{sucesso.descricao}}
+        </div>
+    </div>
+
+    <div class="row card-cadastro mb-4">
+
+        <div class="col-sm-12">
+            <div class="form-group">
+                <div class="input-group box-shadow">
+                    <div class="input-group-addon border-top-0 border-left-0 border-bottom-0 rounded-0">
+                        <i class="fa fa-search"></i>
+                    </div>
+                    <input type="text" [(ngModel)]="searchText" placeholder="Digite o nome do produto..." class="form-control border-0">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <button type="button" class="btn btn-primary" (click)="cadastrarProdutos()">
+                <i class="fa fa-shopping-basket"></i>&nbsp;&nbsp;Adicionar Produto
+            </button>
+        </div>
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive bg-white box-shadow">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center" width="10%"></th>
+                            <th class="text-center" width="5%">Código</th>
+                            <th class="text-left" width="25%">Produto</th>
+                            <th class="text-left" width="15%">Marca</th>
+                            <th class="text-left" width="15%">Categoria</th>
+                            <th class="text-left" width="10%">Quantidade</th>
+                            <th class="text-center" width="5%">Status</th>
+                            <th class="text-center" width="10%"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let produto of produtos | ProdutoSearchPipe : searchText | paginate: { itemsPerPage: 10, currentPage: p }">
+                            <td class="align-middle">
+                                <i *ngIf="!produto.produto_img_b64" class="fa fa-shopping-basket fa-3x" aria-hidden="true"></i>
+                                <img *ngIf="produto.produto_img_b64" class="d-flex mr-3" [src]="produto.produto_img_b64" width="60">
+                            </td>
+                            <td class="align-middle text-truncate text-center">
+                                <span class="badge badge-pill badge-warning">{{produto.produto_id}}</span>
+                            </td>
+                            <td class="align-middle text-truncate">{{produto.produto_descricao}}</td>
+                            <td class="align-middle text-truncate">{{produto.marca_descricao}}</td>
+                            <td class="align-middle text-truncate">{{produto.categoria_descricao}}</td>
+                            <td class="align-middle text-truncate">{{produto.quantidade}}{{produto.unidade_medida_sigla}}</td>
+                            <td class="text-center">
+                                <i [hidden]="produto.produto_status == 1" class="fa fa-toggle-off fa-2x" aria-hidden="true" title="Ativar" (click)="ativarProduto(produto)" style="color:#0F253B;"></i>
+                                <i [hidden]="produto.produto_status == 0" class="fa fa-toggle-on fa-2x" aria-hidden="true" title="Desativar" (click)="desativarProduto(produto)" style="color:#0F253B;"></i>
+                            </td>
+                            <td class="text-center">
+                                <button class="btn btn-secondary btn-sm" (click)="editarProduto(produto)">
+                                    <i class="fa fa-pencil fa-2x" title="Editar"></i>
+                                </button>
+                                <button class="btn btn-secondary btn-sm" (click)="adicionarLote(produto)">
+                                    <i class="fa fa-archive fa-2x" title="Adicionar Lote"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="bg-white text-center">
+                <pagination-controls autoHide="true" (pageChange)="p = $event" maxSize="10"></pagination-controls>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal inportar planilha-->
+    <div class="modal fade" id="primary-modal" tabindex="-1" role="dialog" aria-labelledby="modal-primary-label">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header state modal-primary">
+                    <h4 class="modal-title" id="modal-primary-label">
+                        <i class="fa fa-camera"></i>Importar Planilha</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="input-group file-upload">
+                            <input type="file" (change)="fileChange(input)" #input class="file-upload-btn" />
+                            <input type="text" class="form-control" placeholder="Choose a file..." value="{{file}}">
+                            <i class="fa fa-times delete-file" (click)="removeFile()" *ngIf="file"></i>
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fa fa-upload"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="enviarArquivo()">Ok</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

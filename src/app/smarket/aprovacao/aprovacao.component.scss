@@ -1,0 +1,121 @@
+$mailbox-scroll-height: 440px;
+
+.mail-container{
+    .fa-search, .fa-ellipsis-v{
+        font-size: 22px;
+        color: #888;
+    }
+    .mail-date{
+        white-space: nowrap;
+        padding-top: 1px;
+        padding-left: 4px;
+    }
+}
+
+.mail-list{
+    position: relative; 
+    height: $mailbox-scroll-height;
+    .mail-list-item{
+        border-bottom: 1px solid #ccc;
+        cursor: pointer;
+        &:first-child{
+            border-top: 1px solid #ccc;
+        }
+        &:hover{
+            background-color: #f5f5f5;
+        }
+        .mail-sender{
+            line-height: 18px;
+        }
+        .mail-subject{
+            line-height: 22px;
+        }
+        &.selected{
+            background-color: #f5f5f5;
+        }
+        &.unread{
+            .mail-sender, .mail-subject{
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+.mail-view-container{
+    border-left: 3px solid #f5f5f5;
+    .mail-view-icons{
+        border-bottom: 1px solid #ccc;
+        width: 100%;
+        .fa-star{
+            color: #FE9700;
+        }
+    }
+}
+.mail-view{
+    position: relative; 
+    height: $mailbox-scroll-height;
+    .empty{
+        .fa-envelope-o{
+            font-size: 200px;
+            color: #e8e8e8;
+        }
+        p{
+            font-size: 16px;
+        }
+    }
+    
+}
+
+.btn-primary.btn-aprovacao {
+    background-color: #f3a619 !important;
+    border-color: #f3a619 !important;
+    border-radius: 0px;
+    color: white;
+    cursor: pointer;
+}
+.btn-primary:hover.btn-aprovacao {
+    background-color: #f8b540 !important;
+}
+
+.btn-primary.btn-aprovacao-modal {
+    background-color: #0F253B !important;
+    border-color: #0F253B !important;
+    border-radius: 0px;
+    color: white;
+    cursor: pointer;
+}
+.btn-primary:hover.btn-aprovacao-modal {
+    background-color: rgb(27, 52, 77) !important;
+}
+
+.aprovacao-title{
+    background-color: #0F253B; 
+    color:#fff; 
+    padding: 10px;
+}
+
+.aprovacao-title h2{
+    text-align: center;
+}
+
+@media (max-width: 767px) { 
+   .mail-view-container{ 
+       border-left: none; 
+       border-top: 3px solid #f5f5f5;
+    }
+}
+
+.modal-dialog .modal-content .modal-header {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+  }
+  .modal-dialog .modal-content .modal-header.modal-primary {
+    color: #fff;
+    background-color: #0F253B!important;
+  }
+  .modal-dialog .close {
+    color: #f5f5f5;
+  }
+  .modal-dialog .close:hover {
+    color: #f5f5f5;
+  }

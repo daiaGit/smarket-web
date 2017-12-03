@@ -1,0 +1,23 @@
+<div class="dropdown d-inline-block">
+    <a class="dropdown-toggle no-caret pl-2 pr-2" id="flags-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span [class]="idiomaSelecionado.class"></span>
+    </a>
+
+    <div class="dropdown-menu dropdown-menu-right rounded-0 mt-3 p-0 box-shadow" aria-labelledby="flags-menu">
+        <div class="flags-menu">
+            <a (click) ="alterarIdioma('pt-BR')" *ngIf="idiomaSelecionado.idioma != 'pt-BR'" class="dropdown-item" href="javascript:void(0);">
+                <span class="flag-icon flag-icon-pt-BR mr-2"></span>{{ 'IDIOMAS.IDIOMAPORTUGES' | translate}}
+            </a>
+            <a (click) ="alterarIdioma('en')" *ngIf="idiomaSelecionado.idioma != 'en'" class="dropdown-item" href="javascript:void(0);">
+                <span class="flag-icon flag-icon-en mr-2"></span>{{ 'IDIOMAS.IDIOMAINGLES' | translate}}
+            </a>
+            <a (click) ="alterarIdioma('es')" *ngIf="idiomaSelecionado.idioma != 'es'" class="dropdown-item" href="javascript:void(0);">
+                <span class="flag-icon flag-icon-es mr-2"></span>{{ 'IDIOMAS.IDIOMAESPANHOL' | translate}}
+            </a>
+            <a (click) ="alterarIdioma('fr')" *ngIf="idiomaSelecionado.idioma != 'fr'" class="dropdown-item" href="javascript:void(0);">
+                <span class="flag-icon flag-icon-fr mr-2"></span>{{ 'IDIOMAS.IDIOMAFRANCES' | translate}}
+            </a>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,151 @@
+<div class="container-fluid funcionario-create">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <img class="icone-form-header pb-2" src="assets/img/icone/icones-adm-funcionario.svg">
+            <h2 class="title-cadastro pb-2">{{ 'FUNCIONARIOS.H2CADASTRARFUNCIONARIO' | translate}}</h2>
+        </div>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+
+        <div class="row card-cadastro">
+
+            <div class="col-sm-12">
+                <div [hidden]="erros.length == 0" *ngFor="let erro of erros; index as i" class="alert alert-danger" role="alert">
+                    <button type="button" class="close" (click)="closeAlert(i)">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>{{erro.item}}</strong><br/> {{erro.descricao}}
+                </div>
+            </div>
+
+            <!-- Div formulario -->
+            <div class="col-sm-12">
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="funcionario_nome">{{ 'FUNCIONARIOS.LBLNOME' | translate}}</label>
+                            <input [formControl]="funcionario_nome" class="form-control validation-field" type="text" name="nome" id="nome">
+                            <small class="text-danger" *ngIf="form.get('funcionario_nome').touched">
+                                <span *ngIf="form.get('funcionario_nome').hasError('required')">{{ 'FUNCIONARIOS.SPANNOMEOBGT' | translate}}</span>
+                                <span *ngIf="form.get('funcionario_nome').hasError('minlength')">{{ 'FUNCIONARIOS.SPANMINCARACTERES' | translate}}</span>
+                                <span *ngIf="form.get('funcionario_nome').hasError('maxlength')">{{ 'FUNCIONARIOS.SPANMAXCARACTERES' | translate}}</span>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="funcionario_sobrenome">{{ 'FUNCIONARIOS.LBLSOBRENOME' | translate}}</label>
+                            <input [formControl]="funcionario_sobrenome" class="form-control validation-field" type="text" name="funcionario_sobrenome"
+                                id="funcionario_sobrenome">
+                            <small class="text-danger" *ngIf="form.get('funcionario_sobrenome').touched">
+                                <span *ngIf="form.get('funcionario_sobrenome').hasError('required')">{{ 'FUNCIONARIOS.SPANSOBRENOMEOBGT' | translate}}</span>
+                                <span *ngIf="form.get('funcionario_sobrenome').hasError('minlength')">{{ 'FUNCIONARIOS.SPANMINCARACTERES' | translate}}</span>
+                                <span *ngIf="form.get('funcionario_sobrenome').hasError('maxlength')">{{ 'FUNCIONARIOS.SPANMAXCARACTERES' | translate}}</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="funcionario_cpf">{{ 'FUNCIONARIOS.LBLCPF' | translate}}</label>
+                            <input [formControl]="funcionario_cpf" name="funcionario_cpf" id="funcionario_cpf" class="form-control validation-field"
+                                placeholder="XXX.XXX.XXX-XX" type="text" specialCharacters="false" mask="000.000.000-00">
+                            <small class="text-danger" *ngIf="form.get('funcionario_cpf').touched">
+                                <span *ngIf="form.get('funcionario_cpf').hasError('required')">{{ 'FUNCIONARIOS.SPANCPFOBGT' | translate}}</span>
+                                <span *ngIf="form.get('funcionario_cpf').hasError('invalidCpf')">{{ 'FUNCIONARIOS.SPANCPFINVALIDO' | translate}}</span>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="cargo_id">{{ 'FUNCIONARIOS.LBLCARGO' | translate}}</label>
+                            <select [formControl]="cargo_id" name="cargo_id" id="cargo_id" class="form-control validation-field">
+                                <option value="">{{ 'FUNCIONARIOS.LBLCARGO' | translate}}</option>
+                                <option *ngFor="let cargo of cargos" [value]="cargo.cargo_id">
+                                    {{cargo.cargo_descricao}}</option>
+                            </select>
+                            <small class="text-danger" *ngIf="form.get('cargo_id').touched">
+                                <span *ngIf="form.get('cargo_id').hasError('required')">{{ 'FUNCIONARIOS.SPANCARGOOBGT' | translate}}</span>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="email_descricao">{{ 'FUNCIONARIOS.LBLEMAIL' | translate}}</label>
+                            <input [formControl]="email_descricao" class="form-control validation-field" type="text" name="email_descricao" id="email_descricao">
+                            <small class="text-danger" *ngIf="form.get('email_descricao').touched">
+                                <span *ngIf="form.get('email_descricao').hasError('required')">{{ 'FUNCIONARIOS.SPANEMAILOBGT' | translate}}</span>
+                                <span *ngIf="form.get('email_descricao').hasError('invalidEmail')">{{ 'FUNCIONARIOS.SPANEMAILINVALIDO' | translate}}</span>
+                            </small>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label for="tipo_telefone_id">{{ 'FUNCIONARIOS.LBLTIPOTELEFONE' | translate}}</label>
+                            <select [formControl]="tipo_telefone_id" class="form-control validation-field" name="tipo_telefone_id" id="tipo_telefone_id"
+                                (change)="setMaskFone()">
+                                <option value="">{{ 'FUNCIONARIOS.OPTIONSELECIONE' | translate}}</option>
+                                <option *ngFor="let tipoTelefone of tiposTelefone" [value]="tipoTelefone.tipo_telefone_id">
+                                    {{tipoTelefone.tipo_telefone_descricao}}</option>
+                            </select>
+                            <small class="text-danger" *ngIf="form.get('tipo_telefone_id').touched">
+                                <span *ngIf="form.get('tipo_telefone_id').hasError('required')">{{ 'FUNCIONARIOS.SPANTIPOTELEFONEOBGT' | translate}}</span>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label for="telefone_ddd">{{ 'FUNCIONARIOS.LBLDDD' | translate}}</label>
+                            <input [formControl]="telefone_ddd" class="form-control validation-field" placeholder="(XX)" type="text" specialCharacters="false"
+                                name="telefone_ddd" id="telefone_ddd" mask="(00)">
+                            <small class="text-danger" *ngIf="form.get('telefone_ddd').touched">
+                                <span *ngIf="form.get('telefone_ddd').hasError('required')">{{ 'FUNCIONARIOS.SPANDDDOBGT' | translate}}</span>
+                                <span *ngIf="form.get('telefone_ddd').hasError('invalidDDD')">{{ 'FUNCIONARIOS.SPANDDDINVALIDO' | translate}}</span>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label for="telefone_numero">{{ 'FUNCIONARIOS.LBLTELEFONE' | translate}}</label>
+                            <input [formControl]="telefone_numero" class="form-control validation-field" name="telefone_numero" id="telefone_numero"
+                                [placeholder]="maskFone.placeholder" type="text" specialCharacters="false" [mask]="maskFone.mask">
+                            <small class="text-danger" *ngIf="form.get('telefone_numero').touched">
+                                <span *ngIf="form.get('telefone_numero').hasError('required')">{{ 'FUNCIONARIOS.SPANTELEFONEOBGT' | translate}}</span>
+                                <span *ngIf="form.get('telefone_numero').hasError('invalidTelefone')">{{ 'FUNCIONARIOS.SPANTELEFONEINVALIDO' | translate}}</span>
+                            </small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row pt-4">
+            <div class="col-sm-12 text-center">
+                <div class="form-group">
+                    <button class="btn btn-primary btn-center w-100p" type="submit">
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;{{ 'FUNCIONARIOS.BTNSALVAR' | translate}}</button>
+
+                    <button class="btn btn-primary btn-center w-100p ml-4" (click)="voltar()" type="button">
+                        <i class="fa fa-reply" aria-hidden="true"></i>&nbsp;{{ 'FUNCIONARIOS.BTNVOLTAR' | translate}}</button>
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+</div>

@@ -1,0 +1,73 @@
+<div class="container-fluid produtos-adm">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <img class="icone-form-header pb-2" src="assets/img/icone/icones-adm_produto-crate.svg">
+            <h2 class="title-cadastro pb-2">Meus Pedidos</h2>
+        </div>
+    </div>
+
+    <div class="row card-cadastro mb-4">
+
+        <div class="col-sm-12">
+            <div class="form-group">
+                <div class="input-group box-shadow">
+                    <div class="input-group-addon border-top-0 border-left-0 border-bottom-0 rounded-0">
+                        <i class="fa fa-search"></i>
+                    </div>
+                    <input type="text" [(ngModel)]="searchText" placeholder="Buscar produto" class="form-control border-0">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive bg-white box-shadow">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Usuário</th>
+                            <th>Valor</th>
+                            <th>Data</th>
+                            <th>Status</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let pedido of pedidos | paginate: { itemsPerPage: 10, currentPage: p }">
+                            <td class="align-middle text-truncate">{{pedido.pedido.pedido_id}}</td>
+                            <td class="align-middle text-truncate">{{pedido.pedido.nome_consumidor}}</td>
+                            <td class="align-middle text-truncate">{{pedido.pedido.pedido_valor}}</td>
+                            <td class="align-middle text-truncate">{{pedido.pedido.pedido_data}}</td>
+                            <td class="align-middle text-truncate">{{pedido.pedido.status_pedido_descricao}}</td>
+                            <td class="align-middle">
+
+                                <button class="btn btn-secondary btn-sm" (click)="acompanharPedido(pedido)">
+                                    <i class="fa fa-pencil"></i>
+                                </button>
+                                <button class="btn btn-secondary btn-sm" (click)="detalharPedido(pedido)">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="bg-white text-center">
+                <pagination-controls autoHide="true" (pageChange)="p = $event" maxSize="3"></pagination-controls>
+            </div>
+        </div>
+    </div>
+
+</div>

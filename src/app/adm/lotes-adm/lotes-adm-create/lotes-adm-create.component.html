@@ -1,0 +1,235 @@
+<div class="container-fluid lotes-create">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <img class="icone-form-header pb-2" src="assets/img/icone/icones-adm_produto-crate.svg">
+            <h2 class="title-cadastro pb-2">Cadastrar Lotes</h2>
+        </div>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+
+        <div class="row card-cadastro">
+
+            <div class="col-sm-12">
+                <div [hidden]="erros.length == 0" *ngFor="let erro of erros; index as i" class="alert alert-danger" role="alert">
+                    <button type="button" class="close" (click)="closeAlert(i)">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>{{erro.item}}</strong>
+                    <br/> {{erro.descricao}}
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <div [hidden]="sucessos.length == 0" *ngFor="let sucesso of sucessos; index as i" class="alert alert-success" role="alert">
+                    <button type="button" class="close" (click)="closeAlertSucesso(i)">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>{{sucesso.item}}</strong>
+                    <br/> {{sucesso.descricao}}
+                </div>
+            </div>
+
+            <!-- Div formulario -->
+            <div class="col-sm-12">
+
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="produto_descricao">Produto</label>
+                            <input [formControl]="produto_descricao" class="form-control validation-field" placeholder="" type="text" specialCharacters="false"
+                                name="produto_descricao" id="produto_descricao" disabled="true">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="lote_data_fabricao">Data Fabricação</label>
+                            <div class="input-group">
+                                <div class="input-group-addon" (click)="dc.toggle()">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input class="form-control validation-field" placeholder="dd-mm-yyyy" name="dpFabricate" [formControl]="lote_data_fabricacao"
+                                    ngbDatepicker [dayTemplate]="dataFabricacao" [markDisabled]="isDisabled" #dc="ngbDatepicker">
+                            </div>
+                        </div>
+                        <ng-template #dataFabricacao let-date="date" let-currentMonth="currentMonth" let-selected="selected" let-disabled="disabled">
+                            <span class="  " [class.weekend]="isWeekend(date)" [class.bg-primary]="selected" [class.hidden]="date.month !== currentMonth"
+                                [class.text-muted]="disabled">
+                                {{ date.day }}
+                            </span>
+                        </ng-template>
+                        <small class="text-danger" *ngIf="form.get('lote_data_fabricacao').touched">
+                            <span *ngIf="form.get('lote_data_fabricacao').hasError('required')">Data Fabricacao obrigatória</span>
+                        </small>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="lote_data_vencimento">Data Vencimento</label>
+                            <div class="input-group">
+                                <div class="input-group-addon" (click)="dc1.toggle()">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input class="form-control validation-field" placeholder="dd-mm-yyyy" name="dpValidate" [formControl]="lote_data_vencimento"
+                                    ngbDatepicker [dayTemplate]="dataVencimento" [markDisabled]="isDisabled" #dc1="ngbDatepicker">
+
+                            </div>
+                        </div>
+                        <ng-template #dataVencimento let-date="date" let-currentMonth="currentMonth" let-selected="selected" let-disabled="disabled">
+                            <span class="custom-day" [class.weekend]="isWeekend(date)" [class.bg-primary]="selected" [class.hidden]="date.month !== currentMonth"
+                                [class.text-muted]="disabled">
+                                {{ date.day }}
+                            </span>
+                        </ng-template>
+                        <small class="text-danger" *ngIf="form.get('lote_data_vencimento').touched">
+                            <span *ngIf="form.get('lote_data_vencimento').hasError('required')">Data validade obrigatória</span>
+                        </small>
+                    </div>
+
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="lote_preco">Lote Preço</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">R$</div>
+                                <input [formControl]="lote_preco" class="form-control validation-field" type="text" name="lote_preco" id="lote_preco">
+                            </div>
+                            <small class="text-danger" *ngIf="form.get('lote_preco').touched">
+                                <span *ngIf="form.get('lote_preco').hasError('required')">Preço obrigatório</span>
+                            </small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label for="lote_quantidade">Lote Quantidade</label>
+                            <input [formControl]="lote_quantidade" class="form-control validation-field" type="text" name="lote_quantidade" id="lote_quantidade">
+                            <small class="text-danger" *ngIf="form.get('lote_quantidade').touched">
+                                <span *ngIf="form.get('lote_quantidade').hasError('required')">Quantidade obrigatória</span>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="unidade_medida_id">Unidade Medida</label>
+                            <select [formControl]="unidade_medida_id" name="unidade_medida_id" id="unidade_medida_id" class="form-control validation-field">
+                                <option value="">Selecione</option>
+                                <option *ngFor="let unidadeMedida of unidadesMedida" [value]="unidadeMedida.unidade_medida_id">
+                                    {{unidadeMedida.unidade_medida_descricao}}</option>
+                            </select>
+                            <small class="text-danger" *ngIf="form.get('unidade_medida_id').touched">
+                                <span *ngIf="form.get('unidade_medida_id').hasError('required')">Unidade Medida Obrigatório</span>
+                            </small>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-7">
+                        <div class="form-group">
+                            <label for="lote_obs">Lote Observação</label>
+                            <input [formControl]="lote_obs" class="form-control validation-field" placeholder="" type="text" specialCharacters="false"
+                                name="lote_obs" id="lote_quantidade">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row card-cadastro text-center mt-3">
+            <div class="col-sm-12 pb-2">
+                <h3>Quem pode comprar?</h3>
+            </div>
+            <div class="col-sm-3 offset-sm-3">
+                <p>
+                    <img class=" pb-2" src="assets/img/icone/B2B.svg" width="200px">
+                </p>
+                <div class="form-group">
+                        <label for="unidade_medida_id">Quantidade Minima</label>
+                    <input [formControl]="qtd_minima_pj" class="form-control validation-field" placeholder="" type="text"
+                        specialCharacters="false" name="qtd_minima_pj" id="qtd_minima_pj" mask="00000" style="width:200px; margin:auto">
+                    <small class="text-danger" *ngIf="form.get('qtd_minima_pj').touched">
+                        <span *ngIf="form.get('qtd_minima_pj').hasError('required')">Quantidade obrigatória</span>
+                        <span *ngIf="form.get('qtd_minima_pj').hasError('')">Quantidade inválida</span>
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="custom-control custom-checkbox">
+                        <input [formControl]="vender_para_pf" class="custom-control-input checkbox-warning" type="checkbox">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">B2C</span>
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <p>
+                    <img class="pb-2" src="assets/img/icone/B2C.svg" width="200px">
+                </p>
+                <div class="form-group">
+                    <label for="unidade_medida_id">Quantidade Minima</label>
+                    <input [formControl]="qtd_minima_pf" class="form-control validation-field" placeholder="" type="text"
+                        specialCharacters="false" name="qtd_minima_pf" id="qtd_minima_pf" mask="00000" style="width:200px; margin:auto">
+                    <small class="text-danger" *ngIf="form.get('qtd_minima_pf').touched">
+                        <span *ngIf="form.get('qtd_minima_pf').hasError('required')">Comprar no mínimo</span>
+                        <span *ngIf="form.get('qtd_minima_pf').hasError('')">Comprar no mínimo</span>
+                    </small>
+                </div>
+                <label class="custom-control custom-checkbox">                    
+                    <input [formControl]="vender_para_pj" class="custom-control-input checkbox-warning" type="checkbox">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">B2B</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="row pt-4">
+            <div class="col-sm-12 text-center">
+                <div class="form-group">
+                    <button class="btn btn-primary btn-center w-100p" type="submit">
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Salvar</button>
+                    <button class="btn btn-primary btn-center w-100p ml-4" type="button">
+                        <i class="fa fa-reply" aria-hidden="true"></i>&nbsp;Voltar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <button type="button" id="openModal" #openModal class="btn btn-secondary" data-backdrop="static" data-toggle="modal" data-target="#default-modal"
+        [hidden]="true">Default</button>
+    <div class="modal fade" id="default-modal" tabindex="-1" role="dialog" aria-labelledby="modal-label">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header state modal-primary">
+                    <h4 class="modal-title" id="modal-primary-label">
+                        <i class="fa fa-archive" aria-hidden="true"></i>Parabéns</h4>
+                </div>
+                <div class="modal-body">
+                    <h3>Lote cadastrado com sucesso!</h3>
+                    <p>Deseja cadastrar outro lote?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary w-100p ml-4" data-dismiss="modal" (click)="redirecionarProdutos()">
+                        <i class="fa fa-shopping-basket" aria-hidden="true"></i>&nbsp;Sim</button>
+                    <button type="button" class="btn btn-primary w-100p ml-4" data-dismiss="modal" (click)="redirecionarLotes()">
+                        <i class="fa fa-archive" aria-hidden="true"></i>&nbsp;Não</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

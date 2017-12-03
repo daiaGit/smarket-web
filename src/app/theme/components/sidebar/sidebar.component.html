@@ -1,0 +1,5 @@
+<div class="sidebar-outer">
+    <a class="logo d-flex align-items-center" routerLink="/" (click)="closeSubMenus()" *ngIf="settings.theme.sidebarIsFixed">
+        <span class="start"><img class="img-fluid" src="../../../../assets/img/logo/logo-completo.png"/></span></a>
+    <app-vertical-menu [menuItems]="menuItems">></app-vertical-menu>    
+</div>

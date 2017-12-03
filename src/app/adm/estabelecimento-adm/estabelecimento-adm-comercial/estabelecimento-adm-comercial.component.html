@@ -1,0 +1,42 @@
+<div class="estabelecimento-adm-comercial">
+
+
+    <div [hidden]="erros.length == 0" *ngFor="let erro of erros; index as i" class="alert alert-danger" role="alert">
+        <button type="button" class="close" (click)="closeAlert(i)">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>{{erro.item}}</strong> {{erro.descricao}}
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-sm-12 pb-2">
+            <h3>Dados Comerciais</h3>
+            <hr/>
+            <br/>
+        </div>
+
+        <div class="col-sm-12">
+            <p>
+                <strong>Razão Social:</strong>&nbsp;{{estabelecimento.estabelecimento_razao_social}}
+            </p>
+            <p>
+                <strong>Nome Fantasia:</strong>&nbsp;{{estabelecimento.estabelecimento_nome_fantasia}}
+            </p>
+            <p>
+                <strong>CNPJ:</strong>&nbsp;{{estabelecimento.estabelecimento_cnpj | CnpjFormat}}
+            </p>
+            <p>
+                <strong>Segmento de Negócio:</strong>&nbsp;{{estabelecimento.estabelecimento_tipo_estabelecimento_descricao}}
+            </p>
+            <p>
+                <strong>Inscrição Estadual:</strong>&nbsp;{{estabelecimento.estabelecimento_inscricao_estadual}}
+            </p>
+            <p>
+                <strong>Inscrição Municipal:</strong>&nbsp;{{estabelecimento.estabelecimento_inscricao_municipal}}
+            </p>
+        </div>
+    </div>
+
+</div>

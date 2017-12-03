@@ -1,0 +1,78 @@
+<div class="estabelecimento-adm-publicidade">
+
+    <div class="row">
+
+        <!-- Div propaganda -->
+        <div class="col-sm-12">
+
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div [hidden]="erros.length == 0" *ngFor="let erro of erros; index as i" class="alert alert-danger" role="alert">
+                        <button type="button" class="close" (click)="closeAlert(i)">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <strong>{{erro.item}}</strong>
+                        <br/> {{erro.descricao}}
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div [hidden]="sucessos.length == 0" *ngFor="let sucesso of sucessos; index as i" class="alert alert-success" role="alert">
+                        <button type="button" class="close" (click)="closeAlertSucesso(i)">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <strong>{{sucesso.item}}</strong>
+                        <br/> {{sucesso.descricao}}
+                    </div>
+                </div>
+
+                <div class="col-sm-3 card-cadastro">
+                    <input type="file" (change)="fileChangeLogo(inputLogo)" #inputLogo class="img-upload-btn" />
+                    <button class="btn btn-warning btn-block rounded-0" type="button">
+                        <span *ngIf="!imageLogo">
+                            <i class="fa fa-upload"></i> Buscar Logotipo</span>
+                        <span *ngIf="imageLogo">
+                            <i class="fa fa-refresh"></i> Trocar Logotipo</span>
+                    </button>
+
+                    <div class="image-wrapper">
+                        <i *ngIf="imageLogo" class="fa fa-times delete-img" (click)="removeImageLogo()"></i>
+                        <img [attr.src]="imageLogo" *ngIf="imageLogo" width="100%">
+                        <img src="assets/img/app/no-image.png" *ngIf="!imageLogo" width="100%" height="250px">
+                    </div>
+                </div>
+
+                <!-- Div formulario -->
+                <div class="col-sm-9 card-cadastro">
+                    <input type="file" (change)="fileChangeBanner(inputBanner)" #inputBanner class="img-upload-btn" />
+
+                    <button class="btn btn-warning btn-block rounded-0" type="button">
+                        <span *ngIf="!imageBanner">
+                            <i class="fa fa-upload"></i> Buscar Banner </span>
+                        <span *ngIf="imageBanner">
+                            <i class="fa fa-refresh"></i> Trocar Banner </span>
+                    </button>
+
+                    <div class="image-wrapper">
+                        <i *ngIf="imageBanner" class="fa fa-times delete-img" (click)="removeImageBanner()"></i>
+                        <img [attr.src]="imageBanner" *ngIf="imageBanner" width="100%" height="250px">
+                        <img src="assets/img/app/no-image.png" *ngIf="!imageBanner" width="100%" height="250px">
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row pt-4">
+                <div class="col-sm-12 text-center">
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-center w-100p" type="submit" (click)="adicionarFoto()">
+                            <i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Salvar</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

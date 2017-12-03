@@ -1,0 +1,151 @@
+.shop-estabelecimento{
+
+.card-E {
+display: inline-block;
+box-shadow: 0 1px 2px 0 rgba(0,0,0,.15);
+margin: 20px;
+position: relative;
+margin-bottom: 50px;
+transition: all .2s ease-in-out;
+}
+
+.card-E:hover {
+    /*box-shadow: 0 5px 22px 0 rgba(0,0,0,.25);*/
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    margin-bottom: 54px;
+}
+img{
+    float: left;
+    
+}
+
+.help{
+    display: inline-block;
+    height: 100%;
+    vertical-align:middle;
+}
+.image {
+    margin-left: 20px;
+    padding: 10px;
+    height: 100px;
+    opacity: .7;
+    overflow: hidden;
+    transition: all .2s ease-in-out;
+}
+
+.text {
+background: #FFF;
+padding: 20px;
+max-height: 130px;
+}
+
+.text p {
+margin-bottom: 0px;
+}
+
+.star-fav{
+    position: absolute;
+    right: 0%;
+    margin-right: 20px;
+    color: rgb(250, 209, 27);
+}
+
+.fab-Location,
+.fab-Frete,
+.fab-Money {
+width: 35px;
+height: 35px;
+border-radius: 50%;
+position: absolute;
+margin-top: -40px;
+box-shadow: 0px 2px 6px rgba(0, 0, 0, .3);
+color: #fff;
+font-size: 20px;
+line-height: 30px;
+text-align: center;
+background: #0066A2;
+-webkit-transition: -webkit-transform .2s ease-in-out;
+transition: transform .2s ease-in-out;
+}
+
+.fab-Location{
+    right: 20px;    
+}
+.fab-Frete {
+    right: 60px;
+}
+
+.fab-Money {
+    right: 100px;
+}
+.fab-Location:hover,
+.fab-Frete:hover,
+.fab-Money:hover, {
+    //background: #549D3C;
+    opacity: .8;
+    cursor: pointer;
+    // -ms-transform: rotate(90deg);
+    //   -webkit-transform: rotate(90deg);
+    //   transform: rotate(90deg);
+}
+
+.sem-valor{
+    font-size: 50px;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
+.card-X {
+    left: 50%;
+    width: 350px;
+    height: 230px;
+    perspective: 600px;
+  }
+  
+  .content-X {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  
+    transition: transform 1s;
+    transform-style: preserve-3d;
+  }
+  
+  .card-X:hover .content-X.rotate {
+    transform: rotateY( 180deg ) ;
+    transition: transform 0.5s;
+  }
+  
+  .front-X,
+  .back-X,
+  .back-Y,
+  .back-Z {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: white;
+    line-height: 100px;
+    color: #03446A;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 5px;
+    backface-visibility: hidden;
+  }
+  
+  .back-X {
+    background: #03446A;
+    color: white;
+    transform: rotateY( 180deg );
+  }
+  .back-Y {
+    background: #CAAA18;
+    color: white;
+    transform: rotateY( 180deg );
+  }
+  .back-Z {
+    background: #EC3C10;
+    color: white;
+    transform: rotateY( 180deg );
+  }
+  ///////////////////////////////////////////////////////////////////////////////
+}

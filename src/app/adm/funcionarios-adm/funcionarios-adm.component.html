@@ -1,0 +1,105 @@
+<div class="container-fluid funcionarios-adm">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <img class="icone-form-header pb-2" src="assets/img/icone/icones-adm_produto-crate.svg">
+            <h2 class="title-cadastro pb-2">Meus Funcionarios</h2>
+        </div>
+    </div>
+
+    <div class="col-sm-12">
+        <div [hidden]="erros.length == 0" *ngFor="let erro of erros; index as i" class="alert alert-danger" role="alert">
+            <button type="button" class="close" (click)="closeAlert(i)">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>{{erro.item}}</strong>
+            <br/> {{erro.descricao}}
+        </div>
+    </div>
+
+    <div class="col-sm-12">
+        <div [hidden]="sucessos.length == 0" *ngFor="let sucesso of sucessos; index as i" class="alert alert-success" role="alert">
+            <button type="button" class="close" (click)="closeAlertSucesso(i)">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>{{sucesso.item}}</strong>
+            <br/> {{sucesso.descricao}}
+        </div>
+    </div>
+
+    <div class="row card-cadastro mb-4">
+
+        <div class="col-sm-12">
+            <div class="form-group">
+                <div class="input-group box-shadow">
+                    <div class="input-group-addon border-top-0 border-left-0 border-bottom-0 rounded-0">
+                        <i class="fa fa-search"></i>
+                    </div>
+                    <input type="text" [(ngModel)]="searchText" placeholder="Digite o nome do funcionário..." class="form-control border-0">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <button type="button" class="btn btn-primary" (click)="cadastrarFuncionario()">
+                <i class="fa fa-user"></i>&nbsp;&nbsp;Adicionar Funcionário
+            </button>
+        </div>
+
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive bg-white box-shadow">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Nome</th>
+                            <th>CPF</th>
+                            <th>Cargo</th>
+                            <th>Telefone</th>
+                            <th>Email</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let funcionario of funcionarios | FuncionarioSearchPipe : searchText | paginate: { itemsPerPage: 10, currentPage: p }">
+                            <td class="align-middle">
+                                <i *ngIf="!funcionario.funcionario_img_b64" class="fa fa-user fa-3x" aria-hidden="true"></i>
+                                <img *ngIf="funcionario.funcionario_img_b64" class="rounded-circle" [src]="funcionario.produto_img_b64" width="60">
+                            </td>
+                            <td class="align-middle text-truncate">{{funcionario.funcionario_nome}}&nbsp;{{funcionario.funcionario_sobrenome}}</td>
+                            <td class="align-middle text-truncate">{{funcionario.funcionario_cpf}}</td>
+                            <td class="align-middle text-truncate">{{funcionario.cargo_descricao}}</td>
+                            <td class="align-middle text-truncate">({{funcionario.telefone_ddd}})&nbsp;{{funcionario.telefone_numero}}</td>
+                            <td class="align-middle text-truncate">{{funcionario.email_descricao}}</td>
+                            <td class="align-middle">
+                                <button class="btn btn-secondary btn-sm" (click)="editarFuncionario(funcionario)">
+                                    <i class="fa fa-pencil fa-2x"></i>
+                                </button>
+                            </td>
+                            <td class="align-middle">
+                                <button class="btn btn-secondary btn-sm">
+                                    <i class="fa fa-trash fa-2x"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="bg-white text-center">
+                    <pagination-controls autoHide="true" (pageChange)="p = $event" maxSize="10"></pagination-controls>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

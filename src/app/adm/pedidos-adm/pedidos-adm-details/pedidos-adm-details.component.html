@@ -1,0 +1,87 @@
+<div *ngIf="consumidor && pedido" class="estabelecimento-adm-comercial">
+
+    <div class="row card-cadastro">
+
+        <div class="col-sm-12 pb-2">
+            <h3>Cliente</h3>
+            <hr/>
+            <br/>
+        </div>
+
+        <div class="col-sm-12">
+            <p>
+                <strong>Nome:</strong>&nbsp;{{consumidor.consumidor_nome}}&nbsp;{{consumidor.consumidor_sobrenome}}
+            </p>
+            <p>
+                <strong>Endereço:</strong>
+                &nbsp;{{consumidor.endereco_rua}},&nbsp;{{consumidor.endereco_numero}}&nbsp;-&nbsp;{{consumidor.endereco_complemento}}&nbsp;-&nbsp;{{consumidor.endereco_bairro}}
+                &nbsp;-&nbsp;{{consumidor.cidade_descricao}}&nbsp;-&nbsp;{{consumidor.estado_sigla}}&nbsp;-&nbsp;{{consumidor.endereco-cep}}
+            </p>
+            <p>
+                    <strong>Contato:</strong>
+                    &nbsp;({{consumidor.telefone_ddd}})&nbsp;{{consumidor.telefone_numero}}
+                </p>
+        </div>
+    </div>
+
+
+    <div class="row card-cadastro">
+
+        <div class="col-sm-12 pb-2">
+            <h3>Pedido</h3>
+            <hr/>
+            <br/>
+        </div>
+
+        <div class="col-sm-12">
+
+            <p>
+                <strong>Código:</strong>&nbsp;{{pedido.pedido.pedido_id}}
+            </p>
+            <p>
+                <strong>Data:</strong>&nbsp;{{pedido.pedido.pedido_data}}
+            </p>
+            <p>
+                <strong>Status:</strong>&nbsp;{{pedido.pedido.status_pedido_descricao}}
+            </p>
+            <p>
+                <strong>Tipo Entrega:</strong>&nbsp;{{pedido.pedido.tipo_entrega_descricao}}
+            </p>
+            <p>
+                <strong>TipoPagamento:</strong>&nbsp;{{pedido.pedido.forma_pagamento_descricao}}
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive bg-white box-shadow">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Lote</th>
+                            <th>Código</th>
+                            <th>Descrição</th>
+                            <th>Data Vencimento</th>
+                            <th>Quantidade</th>
+                            <th>Valor Unitário</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of pedido.pedido_produtos">
+                            <td class="align-middle text-truncate">{{item.lote_id}}</td>
+                            <td class="align-middle text-truncate">{{item.produto_id}}</td>
+                            <td class="align-middle text-truncate">{{item.produto_descricao}}&nbsp;-&nbsp;{{item.marca_descricao}}&nbsp;-&nbsp;{{item.peso}}{{item.unidade_medida_sigla}}</td>
+                            <td class="align-middle text-truncate">{{item.lote_data_vencimento}}</td>
+                            <td class="align-middle text-truncate">{{item.quantidade}}</td>
+                            <td class="align-middle text-truncate">{{item.valor_unitario}}</td>
+                            <td class="align-middle text-truncate">{{item.total_produto}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,121 @@
+<div class="container-fluid pedidos-status">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <img class="icone-form-header pb-2" src="assets/img/icone/icones-adm_produto-crate.svg">
+            <h2 class="title-cadastro pb-2">Acompanhar Pedido</h2>
+        </div>
+    </div>
+
+    <form [formGroup]="">
+
+        <div class="row card-cadastro text-center mt-3">
+
+
+            <div class="col-sm-12">
+                <div [hidden]="erros.length == 0" *ngFor="let erro of erros; index as i" class="alert alert-danger" role="alert">
+                    <button type="button" class="close" (click)="closeAlert(i)">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>{{erro.item}}</strong>
+                    <br/> {{erro.descricao}}
+                </div>
+            </div>
+
+            <div class="col-sm-12 pb-2">
+                <h3>Alterar Status do pedido</h3>
+            </div>
+
+            <div class="col-sm-2">
+                <p>
+                    <img class=" pb-2" src="assets/img/icone/icone-retirar-frete.svg" width="200px">
+                </p>
+                <div class="form-group">
+                    <label class="custom-control custom-checkbox">
+                        <input [formControl]="pedido_pag_pendente" class="custom-control-input checkbox-warning" type="checkbox" (change)="atualizarStatusPedido(1)" [disabled]="statusAtual == 1" >
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">Pagamento Pendente</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <p>
+                    <img class=" pb-2" src="assets/img/icone/icone-retirar-frete.svg" width="200px">
+                </p>
+                <div class="form-group">
+                    <label class="custom-control custom-checkbox">
+                        <input [formControl]="pedido_pag_confirmado" class="custom-control-input checkbox-warning" type="checkbox" (change)="atualizarStatusPedido(2)" [disabled]="statusAtual == 2" >
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">Pagamento Confirmado</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <p>
+                    <img class=" pb-2" src="assets/img/icone/icone-retirar-frete.svg" width="200px">
+                </p>
+                <div class="form-group">
+                    <label class="custom-control custom-checkbox">
+                        <input [formControl]="pedido_separacao" class="custom-control-input checkbox-warning" type="checkbox" (change)="atualizarStatusPedido(3)" [disabled]="statusAtual == 3" >
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">Em Separação</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <p>
+                    <img class=" pb-2" src="assets/img/icone/icone-retirar-frete.svg" width="200px">
+                </p>
+                <div class="form-group">
+                    <label class="custom-control custom-checkbox">
+                        <input [formControl]="pedido_preparado_envio" class="custom-control-input checkbox-warning" type="checkbox" (change)="atualizarStatusPedido(4)" [disabled]="statusAtual == 4" >
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">Preparar Envio</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <p>
+                    <img class=" pb-2" src="assets/img/icone/icone-retirar-frete.svg" width="200px">
+                </p>
+                <div class="form-group">
+                    <label class="custom-control custom-checkbox">
+                        <input [formControl]="pedido_pedido_retirar" class="custom-control-input checkbox-warning" type="checkbox" (change)="atualizarStatusPedido(5)" [disabled]="statusAtual == 5" >
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">Pronto para Retirada</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <p>
+                    <img class=" pb-2" src="assets/img/icone/icone-retirar-frete.svg" width="200px">
+                </p>
+                <div class="form-group">
+                    <label class="custom-control custom-checkbox">
+                        <input [formControl]="pedido_concluido" class="custom-control-input checkbox-warning" type="checkbox" (change)="atualizarStatusPedido(6)" [disabled]="statusAtual == 6" >
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">Concluido</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <p>
+                    <img class=" pb-2" src="assets/img/icone/icone-retirar-frete.svg" width="200px">
+                </p>
+                <div class="form-group">
+                    <label class="custom-control custom-checkbox">
+                        <input [formControl]="pedido_concluido" class="custom-control-input checkbox-warning" type="checkbox" (change)="atualizarStatusPedido(7)" [disabled]="statusAtual == 7" >
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">Cancelado</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

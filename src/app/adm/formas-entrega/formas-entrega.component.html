@@ -1,0 +1,63 @@
+<div class="container-fluid formas-entrega">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <img class="icone-form-header pb-2" src="assets/img/icone/icones-adm_produto-crate.svg">
+            <h2 class="title-cadastro pb-2">Minhas Formas de Entrega</h2>
+        </div>
+    </div>
+
+    <form [formGroup]="">
+
+        <div class="row card-cadastro text-center mt-3">
+
+
+            <div class="col-sm-12">
+                <div [hidden]="erros.length == 0" *ngFor="let erro of erros; index as i" class="alert alert-danger" role="alert">
+                    <button type="button" class="close" (click)="closeAlert(i)">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>{{erro.item}}</strong>
+                    <br/> {{erro.descricao}}
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <div [hidden]="sucessos.length == 0" *ngFor="let sucesso of sucessos; index as i" class="alert alert-success" role="alert">
+                    <button type="button" class="close" (click)="closeAlertSucesso(i)">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>{{sucesso.item}}</strong>
+                    <br/> {{sucesso.descricao}}
+                </div>
+            </div>
+
+            <div class="col-sm-12 pb-2">
+                <h3>Escolha suas formas de entrega</h3>
+            </div>
+            <div class="col-sm-3 offset-sm-3">
+                <p>
+                    <img class=" pb-2" src="assets/img/icone/icone-retirar-frete.svg" width="200px">
+                </p>
+                <div class="form-group">
+                    <label class="custom-control custom-checkbox">
+                        <input [formControl]="entrega_frete" class="custom-control-input checkbox-warning" type="checkbox" (change)="atualizaFormaEntrega(form.value.entrega_frete,1)">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">Frete</span>
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <p>
+                    <img class=" pb-2" src="assets/img/icone/icone-retirar-loja.svg" width="200px">
+                </p>
+                <label class="custom-control custom-checkbox">
+                    <input [formControl]="entrega_loja" class="custom-control-input checkbox-warning" type="checkbox" (change)="atualizaFormaEntrega(form.value.entrega_loja,2)">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Retirar na Loja</span>
+                </label>
+            </div>
+        </div>
+
+    </form>
+</div>

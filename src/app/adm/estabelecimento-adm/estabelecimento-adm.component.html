@@ -1,0 +1,72 @@
+<div class="container-fluid estabelecimento-dados">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <img class="icone-form-header pb-2" src="assets/img/icone/icones-adm_produto-crate.svg">
+            <h2 class="title-cadastro pb-2">Meu Estabelecimento</h2>
+        </div>
+    </div>
+
+
+
+<div class="row card-cadastro">
+    <div class="col-sm-2">
+        <button class="btn btn-outline-primary btn-exibe-estabelecimento w-100p mb-1" type="button" (click)="ativarConteudo(0)">
+            <img [hidden]="!loja" src="../../../assets/img/icone/icone-estab-_loja.svg">
+            <img [hidden]="loja" src="../../../assets/img/icone/icone-estab-cinza_loja.svg">
+        </button>
+    </div>
+    <div class="col-sm-2">
+        <button class="btn btn-outline-primary btn-exibe-estabelecimento  w-100p mb-1" type="button" (click)="ativarConteudo(1)">
+            <img [hidden]="!endereco" src="../../../assets/img/icone/icone-estab-_mapa.svg">
+            <img [hidden]="endereco" src="../../../assets/img/icone/icone-estab-cinza_mapa.svg">
+        </button>
+    </div>
+    <div class="col-sm-2">
+        <button class="btn btn-outline-primary btn-exibe-estabelecimento w-100p mb-1" type="button" (click)="ativarConteudo(2)">
+            <img [hidden]="!telefone" src="../../../assets/img/icone/icone-estab-_telefone.svg">
+            <img [hidden]="telefone" src="../../../assets/img/icone/icone-estab-cinza_telefone.svg">
+        </button>
+    </div>
+    <div class="col-sm-2">
+        <button class="btn btn-outline-primary btn-exibe-estabelecimento w-100p mb-1" type="button" (click)="ativarConteudo(3)">
+            <img [hidden]="!bancario" src="../../../assets/img/icone/icone-estab-_cartao.svg">
+            <img [hidden]="bancario" src="../../../assets/img/icone/icone-estab-cinza_cartao.svg">
+        </button>
+    </div>
+    <div class="col-sm-2">
+        <button class="btn btn-outline-primary btn-exibe-estabelecimento btn-exibe-estabelecimento w-100p mb-1" type="button" (click)="ativarConteudo(4)">
+            <img [hidden]="!fotos" src="../../../assets/img/icone/icone-estab-_imagens.svg">
+            <img [hidden]="fotos" src="../../../assets/img/icone/icone-estab-cinza_imagens.svg">
+        </button>
+    </div>
+    <div class="col-sm-2">
+        <button class="btn btn-outline-primary btn-exibe-estabelecimento w-100p mb-1" type="button" (click)="ativarConteudo(5)">
+            <img [hidden]="!contrato" src="../../../assets/img/icone/icone-estab-_contrato.svg">
+            <img [hidden]="contrato" src="../../../assets/img/icone/icone-estab-cinza_contrato.svg">
+        </button>
+    </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="row card-cadastro">
+    <div [hidden]="!loja" class="col-sm-12 col-12">
+        <app-estabelecimento-adm-comercial></app-estabelecimento-adm-comercial>
+    </div>
+    <div [hidden]="!endereco" class="col-sm-12 col-12">
+        <app-estabelecimento-adm-endereco></app-estabelecimento-adm-endereco>
+    </div>
+    <div [hidden]="!telefone" class="col-sm-12 col-12">
+        <app-estabelecimento-adm-contato></app-estabelecimento-adm-contato>
+    </div>
+    <div [hidden]="!bancario" class="col-sm-12 col-12">
+        <app-estabelecimento-adm-bancario></app-estabelecimento-adm-bancario>
+    </div>
+    <div [hidden]="!fotos" class="tab-pane" id="publicidade">
+        <app-estabelecimento-adm-publicidade></app-estabelecimento-adm-publicidade>
+    </div>
+</div>
+
+</div>
+

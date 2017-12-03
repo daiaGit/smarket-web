@@ -1,0 +1,98 @@
+<div class="estabelecimento-adm-bancario">
+
+    <div [hidden]="erros.length == 0" *ngFor="let erro of erros; index as i" class="alert alert-danger" role="alert">
+        <button type="button" class="close" (click)="closeAlert(i)">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>{{erro.item}}</strong> {{erro.descricao}}
+    </div>
+
+
+    <div [hidden]="sucessos.length == 0" *ngFor="let sucesso of sucessos; index as i" class="alert alert-success" role="alert">
+        <button type="button" class="close" (click)="closeAlert(i)">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>{{sucesso.item}}</strong>
+        <br/>{{sucesso.descricao}}
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-sm-12 pb-2">
+            <h3>Dados Bancarios</h3>
+            <hr/>
+        </div>
+
+        <!-- Div propaganda -->
+        <div class="col-sm-12">
+
+            <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="text-left mt-4">
+
+                <div class="row">
+
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <label for="banco">Banco</label>
+                            <input [formControl]="banco" name="banco" id="banco" class="form-control validation-field" type="text">
+                            <small class="text-danger" *ngIf="form.get('banco').touched">
+                                <span *ngIf="form.get('banco').hasError('required')">Banco Obrigatório</span>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="codigoBanco">Códio do Banco</label>
+                            <input [formControl]="codigoBanco" name="codigoBanco" id="codigoBanco" class="form-control validation-field" type="text"
+                                specialCharacters="false" mask="000000000000000000">
+                            <small class="text-danger" *ngIf="form.get('codigoBanco').touched">
+                                <span *ngIf="form.get('codigoBanco').hasError('required')">Código do Banco Obrigatório</span>
+                            </small>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="agencia">Agência</label>
+                            <input [formControl]="agencia" name="agencia" id="agencia" class="form-control validation-field" type="text" specialCharacters="false"
+                                mask="0000000000000">
+                            <small class="text-danger" *ngIf="form.get('agencia').touched">
+                                <span *ngIf="form.get('agencia').hasError('required')">Agência Obrigatória</span>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="contaCorrente">Conta Corrente</label>
+                            <input [formControl]="contaCorrente" name="contaCorrente" id="contaCorrente" class="form-control validation-field" type="text"
+                                specialCharacters="false" mask="000000000000">
+                            <small class="text-danger" *ngIf="form.get('contaCorrente').touched">
+                                <span *ngIf="form.get('contaCorrente').hasError('required')">Conta Corrente Obrigatória</span>
+                            </small>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div class="row pt-4">
+                    <div class="col-sm-12 text-center">
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-center w-100p ml-4" type="button">
+                                <i class="fa fa-reply" aria-hidden="true"></i>&nbsp;Salvar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,209 @@
+<div class="container-fluid funcionario-create">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <img class="icone-form-header pb-2" src="assets/img/icone/icones-adm-funcionario.svg">
+            <h2 class="title-cadastro pb-2">Meu Perfil</h2>
+        </div>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+
+        <div class="row">
+
+            <div class="col-sm-12">
+                <div [hidden]="erros.length == 0" *ngFor="let erro of erros; index as i" class="alert alert-danger" role="alert">
+                    <button type="button" class="close" (click)="closeAlert(i)">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>{{erro.item}}</strong>
+                    <br/> {{erro.descricao}}
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <div [hidden]="sucessos.length == 0" *ngFor="let sucesso of sucessos; index as i" class="alert alert-success" role="alert">
+                    <button type="button" class="close" (click)="closeAlertSucesso(i)">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>{{sucesso.item}}</strong>
+                    <br/> {{sucesso.descricao}}
+                </div>
+            </div>
+
+            <!-- Div formulario -->
+            <div class="col-sm-10">
+
+                <div class="card-cadastro">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="funcionario_nome">Nome</label>
+                                <input [formControl]="funcionario_nome" class="form-control validation-field" type="text" name="nome" id="nome">
+                                <small class="text-danger" *ngIf="form.get('funcionario_nome').touched">
+                                    <span *ngIf="form.get('funcionario_nome').hasError('required')">Nome obrigatório</span>
+                                    <span *ngIf="form.get('funcionario_nome').hasError('minlength')">Minimo 3 caracteres</span>
+                                    <span *ngIf="form.get('funcionario_nome').hasError('maxlength')">Máximo 150 caracteres</span>
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="funcionario_sobrenome">Sobrenome</label>
+                                <input [formControl]="funcionario_sobrenome" class="form-control validation-field" type="text" name="funcionario_sobrenome"
+                                    id="funcionario_sobrenome">
+                                <small class="text-danger" *ngIf="form.get('funcionario_sobrenome').touched">
+                                    <span *ngIf="form.get('funcionario_sobrenome').hasError('required')">Sobrenome obrigatório</span>
+                                    <span *ngIf="form.get('funcionario_sobrenome').hasError('minlength')">Minimo 3 caracteres</span>
+                                    <span *ngIf="form.get('funcionario_sobrenome').hasError('maxlength')">Máximo 150 caracteres</span>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="funcionario_cpf">CPF</label>
+                                <input [formControl]="funcionario_cpf" name="funcionario_cpf" id="funcionario_cpf" class="form-control validation-field"
+                                    placeholder="XXX.XXX.XXX-XX" type="text" specialCharacters="false" mask="000.000.000-00">
+                                <small class="text-danger" *ngIf="form.get('funcionario_cpf').touched">
+                                    <span *ngIf="form.get('funcionario_cpf').hasError('required')">Cpf obrigatório</span>
+                                    <span *ngIf="form.get('funcionario_cpf').hasError('invalidCpf')">Cpf inválido</span>
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="cargo_id">Cargo</label>
+                                <select [formControl]="cargo_id" name="cargo_id" id="cargo_id" class="form-control validation-field">
+                                    <option value="">Cargo</option>
+                                    <option *ngFor="let cargo of cargos" [value]="cargo.cargo_id">
+                                        {{cargo.cargo_descricao}}</option>
+                                </select>
+                                <small class="text-danger" *ngIf="form.get('cargo_id').touched">
+                                    <span *ngIf="form.get('cargo_id').hasError('required')">Cargo obrigatório</span>
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="email_descricao">Email</label>
+                                <input [formControl]="email_descricao" class="form-control validation-field" type="text" name="email_descricao" id="email_descricao">
+                                <small class="text-danger" *ngIf="form.get('email_descricao').touched">
+                                    <span *ngIf="form.get('email_descricao').hasError('required')">Email obrigatório</span>
+                                    <span *ngIf="form.get('email_descricao').hasError('invalidEmail')">Email inválido</span>
+                                </small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="tipo_telefone_id">Tipo de Telefone</label>
+                                <select [formControl]="tipo_telefone_id" class="form-control validation-field" name="tipo_telefone_id" id="tipo_telefone_id"
+                                    (change)="setMaskFone()">
+                                    <option value="">Selecione</option>
+                                    <option *ngFor="let tipoTelefone of tiposTelefone" [value]="tipoTelefone.tipo_telefone_id">
+                                        {{tipoTelefone.tipo_telefone_descricao}}</option>
+                                </select>
+                                <small class="text-danger" *ngIf="form.get('tipo_telefone_id').touched">
+                                    <span *ngIf="form.get('tipo_telefone_id').hasError('required')">Tipo de telefone obrigatório</span>
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label for="telefone_ddd">DDD</label>
+                                <input [formControl]="telefone_ddd" class="form-control validation-field" placeholder="(XX)" type="text" specialCharacters="false"
+                                    name="telefone_ddd" id="telefone_ddd" mask="(00)">
+                                <small class="text-danger" *ngIf="form.get('telefone_ddd').touched">
+                                    <span *ngIf="form.get('telefone_ddd').hasError('required')">DDD obrigatório</span>
+                                    <span *ngIf="form.get('telefone_ddd').hasError('invalidDDD')">DDD inválido</span>
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="telefone_numero">Telefone</label>
+                                <input [formControl]="telefone_numero" class="form-control validation-field" name="telefone_numero" id="telefone_numero"
+                                    [placeholder]="maskFone.placeholder" type="text" specialCharacters="false" [mask]="maskFone.mask">
+                                <small class="text-danger" *ngIf="form.get('telefone_numero').touched">
+                                    <span *ngIf="form.get('telefone_numero').hasError('required')">Telefone obrigatório</span>
+                                    <span *ngIf="form.get('telefone_numero').hasError('invalidTelefone')">Telefone inválido</span>
+                                </small>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-sm-2 card-cadastro">
+                <img *ngIf="!imageUsuario" src="assets/img/app/no-image.png" width="100%">
+                <img *ngIf="imageUsuario" [src]="imageUsuario" width="100%">
+
+                <br/>
+                <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#image-upload-modal">
+                    <i class="fa fa-camera"></i>&nbsp;Carregar Foto
+                </button>
+                <div class="modal fade" id="image-upload-modal" tabindex="-1" role="dialog" aria-labelledby="modal-primary-label">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header state modal-primary">
+                                <h4 class="modal-title" id="modal-primary-label">
+                                    <i class="fa fa-camera"></i>Carregar Foto</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <input type="file" (change)="fileChange(input)" #input class="img-upload-btn" />
+
+                                <button class="btn btn-warning btn-block rounded-0" type="button">
+                                    <span *ngIf="!image">
+                                        <i class="fa fa-upload"></i> Buscar Foto </span>
+                                    <span *ngIf="image">
+                                        <i class="fa fa-refresh"></i> Trocar Foto </span>
+                                </button>
+
+                                <div class="image-wrapper">
+                                    <i *ngIf="image" class="fa fa-times delete-img" (click)="removeImage()"></i>
+                                    <img [attr.src]="image" *ngIf="image" width="100%">
+                                    <img src="assets/img/app/no-image.png" *ngIf="!image" width="100%">
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary w-100p ml-0" data-dismiss="modal" (click)="adicionarFoto()">
+                                    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp;Adicionar</button>
+                                <button type="button" class="btn btn-primary w-100p ml-4" data-dismiss="modal">
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Fechar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="row pt-4">
+            <div class="col-sm-12 text-center">
+                <div class="form-group">
+                    <button class="btn btn-primary btn-center w-100p" type="submit">
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Editar</button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>

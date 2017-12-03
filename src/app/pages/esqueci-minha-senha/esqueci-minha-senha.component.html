@@ -1,0 +1,45 @@
+<div class="container-fluid">
+
+    <div class="row div-login-smarket">
+        <div class="col-sm-12">
+            <img class="logotipo-login-smarket" src="../../../assets/img/logo/logo-completo-branco.png">
+        </div>
+    </div>
+
+
+    <div class="row div-round">
+
+        <div class="col-sm-12">
+            <img class="gif-login-smarket" src="../../../assets/img/gif/esqueci-senha.gif">
+            <h2 class="login">{{ 'ESQUECISENHA.TITULOESQUECISENHA' | translate }}</h2>
+        </div>
+
+        <div class="col-sm-12">
+
+            <div class="col-sm-8 offset-md-2">
+                <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="text-left" style="margin-top: -10%;">
+
+                    <div class="form-group">
+                        <label for="email-b-f">{{ 'ESQUECISENHA.LABELEMAIL' | translate }}</label>
+                        <input [formControl]="email" class="form-control validation-field" type="text">
+                        <small class="text-danger" *ngIf="form.get('email').touched && form.get('email').hasError('required')">{{ 'ESQUECISENHAVALIDATE.EMAILREQUIRED' | translate }}</small>
+                        <small class="text-danger" *ngIf="form.get('email').touched && form.get('email').hasError('invalidEmail')">{{ 'ESQUECISENHAVALIDATE.EMAILINVALID' | translate }}</small>
+                    </div>
+
+                    <div class="form-group col-sm-8 offset-md-2">                
+                        <button class="btn btn-entrar btn-lg btn-block" type="submit">{{ 'ESQUECISENHA.BTNENVIAR' | translate }}</button>
+                    </div>
+
+                </form>
+
+                <div [hidden]="erros.length == 0" *ngFor="let erro of erros; index as i" class="alert alert-danger" role="alert">
+                    <button type="button" class="close" (click)="closeAlert(i)">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>{{erro.item}}</strong> {{erro.descricao}}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,94 @@
+<div class="container-fluid">
+
+    <div class="row">
+
+        <!-- Div propaganda -->
+        <div class="col-sm-7 text-center login-container-propaganda login-bg-primary">
+
+            <div>
+                <img class="login-logotipo" src="../../../assets/img/logo/logo-completo-branco.png">
+            </div>
+            <h1 class="destaque-white">
+                SMARKET o mercado que faz toda diferença!
+            </h1>
+            <img class="login-mascote" src="{{gif}}" width="70%">
+
+        </div>
+
+        <!-- Div Login -->
+        <div class="col-sm-5 text-center">
+
+            <img style="margin-top:20px; margin-bottom:20px;" src="../../../assets/img/texto/faca-seu-login.png">
+
+            <div class="row text-center">
+                <div class="col-sm-12">
+                    <h4>Escolha seu perfil</h4>
+                </div>
+
+                <div class="col-sm-3 offset-sm-3">
+
+                    <img src="{{iconePerfilPf}}" (click)="alterarPerfil('consumidor')">
+                    <span>Para minha casa</span>
+
+                </div>
+
+                <div class="col-sm-3">
+
+                    <img src="{{iconePerfilPj}}" (click)="alterarPerfil('estabelecimento')">
+                    <span>Para meu negócio</span>
+
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-10 offset-md-1">
+                    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="text-left mt-4">
+                        <div class="form-group">
+                            <label for="email-b-f">Email</label>
+                            <input [formControl]="email" class="form-control validation-field" type="text">
+                            <small class="text-danger" *ngIf="form.get('email').touched && form.get('email').hasError('required')">Email is required</small>
+                            <small class="text-danger" *ngIf="form.get('email').touched && form.get('email').hasError('email')">Invalid email address</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="email-b-f">Senha</label>
+                            <input [formControl]="password" class="form-control validation-field" type="password">
+                            <small class="text-danger" *ngIf="form.get('password').touched && form.get('password').hasError('required')">Password is required</small>
+                            <small class="text-danger" *ngIf="form.get('password').touched && form.get('password').hasError('minlength')">Password isn't long enough, minimum of 6 characters</small>
+                        </div>
+                        <div class="form-group">
+                            <label class="custom-control custom-checkbox">
+                                <input class="custom-control-input checkbox-main" type="checkbox">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description align-middle">
+                                    Mantenha-me conectado.</span>
+                            </label>
+                            <a class="transition pull-right" routerlink="/esqueci-senha" href="/esqueci-senha">Esqueceu a senha?</a>
+                        </div>
+
+                        <div class="form-group col-sm-8 offset-md-2">
+                            <button class="btn btn-entrar btn-lg btn-block" type="submit">Entrar</button>
+                        </div>
+
+                        <div [hidden]="perfil == 'estabelecimento'" class="form-group col-sm-8 offset-md-2">
+                            <button (click)="getLoginFacebook()" class="btn btn-primary btn-lg btn-block" type="button">
+                                <i class="fa fa-facebook"></i>Entrar com Facebook</button>
+                        </div>
+
+                        <a [hidden]="perfil == 'estabelecimento'" class="transition text-center" routerlink="/register-consumidor" href="/register-consumidor">Criar uma conta agora!</a>
+                        <a [hidden]="perfil == 'consumidor'" class="transition text-center" routerlink="/register-estabelecimento" href="/register-estabelecimento">Criar uma conta agora!</a>
+
+                    </form>
+
+                    <div [hidden]="erros.length == 0" *ngFor="let erro of erros; index as i" class="alert alert-danger" role="alert">
+                        <button type="button" class="close" (click)="closeAlert(i)">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <strong>{{erro.item}}</strong> {{erro.descricao}}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

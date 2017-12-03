@@ -1,0 +1,436 @@
+[33mcommit 91ce4c44a07379a3040d654ce975c34cf9f4d642[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Mon Nov 6 12:35:30 2017 -0200
+
+    atualizações
+
+[33mcommit 4f0edc413f9a672328f6768c7fedf24a77e3fdb8[m
+Author: Adriano Loche <lochesystem@gmail.com>
+Date:   Mon Oct 30 17:39:35 2017 -0200
+
+    modificações gerais
+
+[33mcommit e7f2520268fea14b03efb59c9d7073df61c78e20[m
+Author: Adriano Loche <lochesystem@gmail.com>
+Date:   Mon Oct 30 17:20:14 2017 -0200
+
+    modificações gerais
+
+[33mcommit bbcc54df172e24cc00b5ceafb8a6f212cb21df78[m
+Author: Adriano Loche <lochesystem@gmail.com>
+Date:   Mon Oct 30 13:43:01 2017 -0200
+
+    modificações gerais
+
+[33mcommit 167d683a0bf1f088d4cd0d461b189bac63fff79c[m
+Merge: 6a1f0c5f 92545487
+Author: Adriano Loche <lochesystem@gmail.com>
+Date:   Sun Oct 29 20:02:20 2017 -0200
+
+    Merge branch 'master' of github.com:daiaGit/projeto-tcc
+
+[33mcommit 6a1f0c5f6a887c4dd122230ffae16d120791dfb7[m
+Author: Adriano Loche <lochesystem@gmail.com>
+Date:   Sun Oct 29 20:01:54 2017 -0200
+
+    estabelecimentos modificações
+
+[33mcommit 925454878b20cc28574a6d46a45a1ee38f6a084d[m
+Author: Rodrigo Bittencourt <robittencourt2013@gmail.com>
+Date:   Sun Oct 29 19:55:57 2017 -0200
+
+    Dados Cadastrais
+
+[33mcommit 46ca176610403fe64e435c66389972ac643fc0d3[m
+Author: Adriano Loche <lochesystem@gmail.com>
+Date:   Sun Oct 29 17:40:42 2017 -0200
+
+    return companies by location
+
+[33mcommit 0499c4f6568824bc6a43b10dd1f9fe199397378c[m
+Author: Adriano Loche <lochesystem@gmail.com>
+Date:   Sun Oct 29 16:22:49 2017 -0200
+
+    Buscar Estado e Cidades Estabelecimento
+
+[33mcommit 89d22db7659b84c9e39def6844b260d49de2b0c0[m
+Author: Adriano Loche <lochesystem@gmail.com>
+Date:   Sun Oct 29 15:32:13 2017 -0200
+
+    Estilização do carrinho
+
+[33mcommit 76d7d9ecd296aa6924272a79963c179905a4ae71[m
+Author: Adriano Loche <lochesystem@gmail.com>
+Date:   Sun Oct 29 12:45:14 2017 -0200
+
+    Modal Estabelecimento Shop
+
+[33mcommit e4462d1742ce812654ba67ef5ad29cb812170848[m
+Merge: be00ae2c 097be0c9
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Sun Oct 29 11:49:12 2017 -0200
+
+    merge
+
+[33mcommit be00ae2cc044b916d444c6d1ca1478315c002c8c[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Sun Oct 29 11:45:14 2017 -0200
+
+    atualizações adm
+
+[33mcommit c2fced5c373ead82afad31968027f6a06b87416d[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Sun Oct 29 11:42:18 2017 -0200
+
+    atualizações adm
+
+[33mcommit 097be0c91b81d48ff14ff0015512ca36e663a6be[m
+Author: Adriano Loche <lochesystem@gmail.com>
+Date:   Sun Oct 29 01:59:38 2017 -0200
+
+    Telas Novas
+
+[33mcommit f199c4faca8ffb1c35142a73a68800a1e96a281e[m
+Merge: f0098276 92d943c9
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Sun Oct 22 23:29:56 2017 -0200
+
+    Merge branch 'master' of https://github.com/daiaGit/projeto-tcc
+
+[33mcommit f00982765e8e3a521ce632bb61f21333c58b7b2f[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Sun Oct 22 23:26:32 2017 -0200
+
+    crud funcionarios
+
+[33mcommit 92d943c9aab08074567705202da5831788eba97f[m
+Author: Adriano Loche <lochesystem@gmail.com>
+Date:   Sun Oct 22 22:38:19 2017 -0200
+
+    cards Estabelecimentos
+
+[33mcommit c0d1d66d50893e0f62299be11d16c6b81de448fa[m
+Merge: 59817ac6 4b81570c
+Author: Adriano Loche <lochesystem@gmail.com>
+Date:   Sun Oct 22 16:30:13 2017 -0200
+
+    Merge branch 'master' of github.com:daiaGit/projeto-tcc
+
+[33mcommit 59817ac67bbf7d2f73f2be07fe129b0d3287225f[m
+Author: Adriano Loche <lochesystem@gmail.com>
+Date:   Sun Oct 22 16:29:53 2017 -0200
+
+    Landing-Page
+
+[33mcommit 4b81570ce74731767253548dede9ff3ada5a1dbd[m
+Merge: 44717d34 3dbe2b5a
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Fri Oct 20 21:57:48 2017 -0200
+
+    Merge branch 'master' of https://github.com/daiaGit/projeto-tcc
+
+[33mcommit 44717d3441f562a8ddc0e2cf5d1c19eacdfdcd9f[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Fri Oct 20 21:53:02 2017 -0200
+
+    criação components adm
+
+[33mcommit 3dbe2b5a22e6e6791c8dace1b122f480f2092a59[m
+Author: Adriano Loche <lochesystem@gmail.com>
+Date:   Fri Oct 20 21:12:48 2017 -0200
+
+    register pages
+
+[33mcommit 305ac1a27a3e7f2ca7c69cc2d17cdc9cdc664ccf[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Thu Oct 19 00:18:16 2017 -0200
+
+    atualizações
+
+[33mcommit 650986c3b6ad40efd50584086f07dbc7c0eeaace[m
+Merge: fe59d0e1 2916f8b1
+Author: Adriano Loche <lochesystem@gmail.com>
+Date:   Tue Oct 17 20:25:46 2017 -0200
+
+    Merge branch 'master' of github.com:daiaGit/projeto-tcc
+
+[33mcommit 2916f8b1df43225d4914a67c971786b0b5c00977[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Tue Oct 17 20:20:51 2017 -0200
+
+    atualização idioma
+
+[33mcommit fe59d0e10ed3827f738eff2810e578c8706e16d3[m
+Merge: c0737eb6 8154d94d
+Author: Adriano Loche <lochesystem@gmail.com>
+Date:   Tue Oct 17 10:13:28 2017 -0200
+
+    Merge branch 'master' of github.com:daiaGit/projeto-tcc
+
+[33mcommit 8154d94d1e24c1d949addd163c5dc8ced8197517[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Sun Oct 15 23:26:17 2017 -0200
+
+    bild prod
+
+[33mcommit 253f888a691811cb1d37bcfe79057093d145e995[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Sun Oct 15 23:24:43 2017 -0200
+
+    bild prod
+
+[33mcommit 7c1d7b96f5d6752a2cb1afbde5cdead56ef091ba[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Sun Oct 15 22:11:26 2017 -0200
+
+    tratamentos telas de cadastro
+
+[33mcommit 1677d7dfeaf21af88617c2fc048e686b0ec604f9[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Sun Oct 15 12:40:46 2017 -0200
+
+    ajustes formulários cadastro
+
+[33mcommit 14bb6df1bd8fbf85d5f4cfe31b5a0dc527c69ca2[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Sat Oct 14 13:11:27 2017 -0300
+
+    atualização cadastro consumidor flag termo de uso
+
+[33mcommit dfa052b1740eb30d1af331d6fba423eca042e7e6[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Sat Oct 14 09:08:38 2017 -0300
+
+    edição formulario consumidor
+
+[33mcommit 8ee4343520761ac5cedb7bee4b6fd17dec1d6419[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Fri Oct 13 12:17:45 2017 -0300
+
+    land page
+
+[33mcommit a409c6985143a0cb8efcf6ff6ccff401b8f52324[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Sun Oct 8 08:42:14 2017 -0300
+
+    cadastrar categoria
+
+[33mcommit 5b4fadf91e7f656a8029e2abca3dda901aed45c5[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Sat Oct 7 09:36:40 2017 -0300
+
+    remoção ng-select2
+
+[33mcommit 747048542dfdc86227c107926430643e807f18b0[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Fri Oct 6 23:19:39 2017 -0300
+
+    ATUALIZAÇÕES
+
+[33mcommit d70d5c844d8f1a337624fb5ef5651c4e3ba8e6b7[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Sun Oct 1 14:53:14 2017 -0300
+
+    crianção componente shop
+
+[33mcommit 96e3e46863fa18ccd673802ac9c68838bea0bf59[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Sun Oct 1 08:48:20 2017 -0300
+
+    Atualizações layout
+
+[33mcommit 70d28d03857c83bee5a6a8f6d34b1a8637eea0d9[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Thu Sep 28 19:58:40 2017 -0300
+
+    artes mascote
+
+[33mcommit c0737eb6da3ec7a462c173fbe62e0584bc07c8b9[m
+Merge: 9b3b48e2 dc650253
+Author: Adriano Loche <lochesystem@gmail.com>
+Date:   Mon Sep 25 08:07:21 2017 -0300
+
+    Merge branch 'master' of github.com:daiaGit/projeto-tcc
+
+[33mcommit dc650253ccd760dc1ed1919cf5829f87e5597001[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Sun Sep 24 15:27:50 2017 -0300
+
+    login com facebook e form estabelecimento
+
+[33mcommit 9b3b48e2fe8ffa8d26d20be20813d5f4f8fe12d9[m
+Merge: d1ab59d9 da658590
+Author: Adriano Loche <lochesystem@gmail.com>
+Date:   Sat Sep 16 18:21:44 2017 -0300
+
+    Merge branch 'master' of github.com:daiaGit/projeto-tcc
+
+[33mcommit da658590ab61db64c81b2a4bedb39e24f8659308[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Sat Sep 16 16:19:39 2017 -0300
+
+    atualização estilos
+
+[33mcommit 4dc8c265f27fdaa3bb26c488559ff788d041ea04[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Sat Sep 16 16:06:36 2017 -0300
+
+    update node-modules plugin
+
+[33mcommit d1ab59d94a50a946e7b24ea0deee794768c4ffeb[m
+Merge: 57196aee c6bee482
+Author: Adriano Loche <adriano.loche@performait.com>
+Date:   Sat Sep 16 09:34:33 2017 -0300
+
+    Merge branch 'master' of github.com:daiaGit/projeto-tcc
+
+[33mcommit c6bee482a11a31845ace95fcbbe05c164c747a6e[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Sat Sep 16 09:28:14 2017 -0300
+
+    atualização componente de contato
+
+[33mcommit 0486830fea883ef91782c1044321beb211c14a71[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Sat Sep 16 09:19:11 2017 -0300
+
+    cricao tela de contato
+
+[33mcommit 57196aeee0c742301619b1052e800955f336d040[m
+Merge: f862d9b3 0486830f
+Author: Adriano Loche <adriano.loche@performait.com>
+Date:   Sat Sep 16 09:18:45 2017 -0300
+
+    Merge branch 'master' of github.com:daiaGit/projeto-tcc
+
+[33mcommit ff3678e9e8860f83ad4661e1040119feb0077e74[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Fri Sep 15 23:11:04 2017 -0300
+
+    .
+
+[33mcommit 5e24c2502f6bb430415c96c195b31f5d63030ae7[m
+Merge: 664a0bb4 ea2cfd35
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Fri Sep 15 22:51:11 2017 -0300
+
+    Merge branch 'master' of https://github.com/daiaGit/projeto-tcc
+
+[33mcommit 664a0bb4bd4f9ec250540af66fe9ac0c2db358ff[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Fri Sep 15 22:49:45 2017 -0300
+
+    .
+
+[33mcommit f862d9b374571fa75605a48e2f74f6220c6d9e5c[m
+Author: Adriano Loche <adriano.loche@performait.com>
+Date:   Thu Sep 14 14:04:05 2017 -0300
+
+    .
+
+[33mcommit ea2cfd35c340d746d2877ef9353ce1ca151714c7[m
+Author: Adriano Loche <adriano.loche@performait.com>
+Date:   Thu Sep 14 14:02:37 2017 -0300
+
+    gitignore
+
+[33mcommit 3dad0a7382129cfa26a91682d63fb7f254d9875c[m
+Merge: d0f5c6a9 f22f6003
+Author: Adriano Loche <lochesystem@gmail.com>
+Date:   Sun Sep 10 15:45:41 2017 -0300
+
+    Merge branch 'master' of https://github.com/daiaGit/projeto-tcc
+
+[33mcommit f22f6003437e97a155336dc31a0d95659d2b3574[m
+Merge: f670f912 a91df05c
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Sun Sep 10 15:45:59 2017 -0300
+
+    Merge branch 'master' of https://github.com/daiaGit/projeto-tcc
+
+[33mcommit d0f5c6a9dc8d786bbf67f2dfaecbe710d062d194[m
+Author: Adriano Loche <lochesystem@gmail.com>
+Date:   Sun Sep 10 15:45:29 2017 -0300
+
+    Só organização...
+
+[33mcommit f670f9127920022f935afa4080b26e02803026ac[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Sun Sep 10 15:43:14 2017 -0300
+
+    instalação translate serv
+
+[33mcommit a91df05cb9feb8be6173a488477e0d3590c99039[m
+Merge: 37ac8952 e1c06690
+Author: Adriano Loche <lochesystem@gmail.com>
+Date:   Sun Sep 10 15:39:54 2017 -0300
+
+    Merge branch 'master' of https://github.com/daiaGit/projeto-tcc
+
+[33mcommit 37ac8952f1090c5acbe4cbddcb23f5be78c29c59[m
+Author: Adriano Loche <lochesystem@gmail.com>
+Date:   Sun Sep 10 15:39:15 2017 -0300
+
+    Categoria, Funcionario, Marca, Produto e Subcategoria Services
+
+[33mcommit e1c0669017a4a3278b9003c7db24f7da91040df3[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Sun Sep 10 15:36:50 2017 -0300
+
+    implementação ng-mask
+
+[33mcommit cf9b6950e2d5b693225b24632490cb89d5faa7b2[m
+Merge: 823a7581 95254b34
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Sun Sep 10 15:12:09 2017 -0300
+
+    Merge branch 'master' of https://github.com/daiaGit/projeto-tcc
+
+[33mcommit 823a758171fc8e1e3cb3414895e9a20c3376f268[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Sun Sep 10 15:11:00 2017 -0300
+
+    alterações cadastro consumidor
+
+[33mcommit 59f414c9560cea2f214e983877a6efd27a4be2fc[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Sun Sep 10 12:50:46 2017 -0300
+
+    metodo cadastrar consumidor
+
+[33mcommit 95254b341c16cb1f0c157347c986e8c34f1121a9[m
+Author: Adriano Loche <lochesystem@gmail.com>
+Date:   Sun Sep 10 12:41:26 2017 -0300
+
+    Acesso, consumidor, estabelecimento services
+
+[33mcommit 1e950460379349097eb1fe383a0c28fccca2d42e[m
+Merge: e03ee26a d2c71a45
+Author: Adriano Loche <lochesystem@gmail.com>
+Date:   Sun Sep 10 12:17:36 2017 -0300
+
+    Merge branch 'master' of https://github.com/daiaGit/projeto-tcc
+
+[33mcommit e03ee26ab57951727f3828f7b3ed8da66b032842[m
+Author: Adriano Loche <lochesystem@gmail.com>
+Date:   Sun Sep 10 12:17:25 2017 -0300
+
+    node-sass rebuild
+
+[33mcommit d2c71a45077923355eeab7911ab4018bad1adbba[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Sun Sep 10 12:15:16 2017 -0300
+
+    ccriaçao consumidor service
+
+[33mcommit 184de9f9dd3868091330b369691c3cc82a5e3a07[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Sun Sep 10 11:38:23 2017 -0300
+
+    integração serviços tipo telefone dormulario cadastro consumidor
+
+[33mcommit e001a6d6906a546fa080e8abc03ed0d58c554003[m
+Author: Daiane <daianealves_@hotmail.com>
+Date:   Sun Sep 10 08:41:45 2017 -0300
+
+    inicio

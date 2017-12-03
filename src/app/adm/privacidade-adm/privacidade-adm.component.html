@@ -1,0 +1,59 @@
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-sm-12">
+            <img class="gif-login-smarket" src="../../../assets/img/gif/esqueci-senha.gif">
+            <h2 class="login">Redefinir Senha</h2>
+        </div>
+
+        <div class="col-sm-12">
+
+            <div class="col-sm-8 offset-md-2">
+                <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="text-left">
+                    <div class="form-group">
+                        <label for="password">{{ 'LOGIN.LABELSENHA' | translate }}</label>
+                        <input [formControl]="password" class="form-control validation-field password" type="password" [type]="passwordType" name="password"
+                            id="password">
+                        <div id="senha" (mouseenter)="setTypePassword('text')" (mouseout)="setTypePassword('password')"></div>
+                        <small class="text-danger" *ngIf="form.get('password').touched && form.get('password').hasError('required')">{{ 'LOGINVALIDATE.SENHAREQUIRED' | translate }}</small>
+                        <small class="text-danger" *ngIf="form.get('password').touched && form.get('password').hasError('minlength')">{{ 'LOGINVALIDATE.SENHAMIN' | translate }}</small>
+                        <small class="text-danger" *ngIf="form.get('password').touched && form.get('password').hasError('minlength')">{{ 'LOGINVALIDATE.SENHAMAX' | translate }}</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">{{ 'LOGIN.LABELSENHA' | translate }}</label>
+                        <input [formControl]="password" class="form-control validation-field password" type="password" [type]="passwordType" name="password"
+                            id="password">
+                        <div id="senha" (mouseenter)="setTypePassword('text')" (mouseout)="setTypePassword('password')"></div>
+                        <small class="text-danger" *ngIf="form.get('password').touched && form.get('password').hasError('required')">{{ 'LOGINVALIDATE.SENHAREQUIRED' | translate }}</small>
+                        <small class="text-danger" *ngIf="form.get('password').touched && form.get('password').hasError('minlength')">{{ 'LOGINVALIDATE.SENHAMIN' | translate }}</small>
+                        <small class="text-danger" *ngIf="form.get('password').touched && form.get('password').hasError('minlength')">{{ 'LOGINVALIDATE.SENHAMAX' | translate }}</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">{{ 'LOGIN.LABELSENHA' | translate }}</label>
+                        <input [formControl]="password" class="form-control validation-field password" type="password" [type]="passwordType" name="password"
+                            id="password">
+                        <div id="senha" (mouseenter)="setTypePassword('text')" (mouseout)="setTypePassword('password')"></div>
+                        <small class="text-danger" *ngIf="form.get('password').touched && form.get('password').hasError('required')">{{ 'LOGINVALIDATE.SENHAREQUIRED' | translate }}</small>
+                        <small class="text-danger" *ngIf="form.get('password').touched && form.get('password').hasError('minlength')">{{ 'LOGINVALIDATE.SENHAMIN' | translate }}</small>
+                        <small class="text-danger" *ngIf="form.get('password').touched && form.get('password').hasError('minlength')">{{ 'LOGINVALIDATE.SENHAMAX' | translate }}</small>
+                    </div>
+
+
+                    <div class="form-group col-sm-8 offset-md-2">
+                        <button class="btn btn-entrar btn-lg btn-block" type="submit">{{ 'LOGIN.BTNENTRAR' | translate }}</button>
+                    </div>
+
+                </form>
+
+                <div [hidden]="erros.length == 0" *ngFor="let erro of erros; index as i" class="alert alert-danger" role="alert">
+                    <button type="button" class="close" (click)="closeAlert(i)">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>{{erro.item}}</strong> {{erro.descricao}}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

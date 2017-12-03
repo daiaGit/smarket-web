@@ -1,0 +1,20 @@
+
+{
+    "IDIOMAS": {
+        "IDIOMAPORTUGES": "Portugués",
+        "IDIOMAINGLES": "Inglés",
+        "IDIOMAFRANCES": "Francés", 
+        "IDIOMAESPANHOL": "Español"
+    },
+    "LOGIN": {
+        "LINKESQUECIA": "¿Ha olvidado la contraseña?",
+        "LABELEMAIL": "Correo electrónico", 
+        "LABELSENHA": "Contraseña",
+        "BTNENTRAR": "Entrar"
+    },
+    "LOGIN-VALIDATE": {
+        "EMAILREQUIRED": "Correo obligatorio!",
+        "EMAILINVALID": "Email no válido!",
+        "SENHAREQUIRED": "Contraseña obligatoria!"
+    }
+}

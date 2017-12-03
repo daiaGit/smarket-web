@@ -1,0 +1,228 @@
+<div class="container-fluid produtos-create">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <img class="icone-form-header pb-2" src="assets/img/icone/icones-adm_produto-crate.svg">
+            <h2 class="title-cadastro pb-2">{{ 'PRODUTOS.H2CADASTRARPRODUTO' | translate}}</h2>
+        </div>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+
+        <div class="row card-cadastro">
+
+            <div class="col-sm-12">
+                <div [hidden]="erros.length == 0" *ngFor="let erro of erros; index as i" class="alert alert-danger" role="alert">
+                    <button type="button" class="close" (click)="closeAlert(i)">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>{{erro.item}}</strong>
+                    <br/> {{erro.descricao}}
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <div [hidden]="sucessos.length == 0" *ngFor="let sucesso of sucessos; index as i" class="alert alert-success" role="alert">
+                    <button type="button" class="close" (click)="closeAlertSucesso(i)">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>{{sucesso.item}}</strong>
+                    <br/> {{sucesso.descricao}}
+                </div>
+            </div>
+
+            <!-- Div formulario -->
+            <div class="col-sm-12">
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="produto_descricao">{{ 'PRODUTOS.LBLTITULOPRODUTO' | translate}}</label>
+                            <input [formControl]="produto_descricao" class="form-control validation-field" type="text" name="nome" id="nome">
+                            <small class="text-danger" *ngIf="form.get('produto_descricao').touched">
+                                <span *ngIf="form.get('produto_descricao').hasError('required')">{{ 'PRODUTOS.SPANDESCRICAOPRODUTO' | translate}}</span>
+                                <span *ngIf="form.get('produto_descricao').hasError('minlength')">{{ 'PRODUTOS.SPANMINCARACTERE' | translate}}</span>
+                                <span *ngIf="form.get('produto_descricao').hasError('maxlength')">{{ 'PRODUTOS.SPANMAXCARACTERE' | translate}}</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="marca_id">{{ 'PRODUTOS.LBLTITULOMARCA' | translate}}</label>
+                            <select [formControl]="marca_id" name="marca_id" id="marca_id" class="form-control validation-field">
+                                <option value="">{{ 'PRODUTOS.OPTIONSELECIONEMARCA' | translate}}</option>
+                                <option *ngFor="let marca of marcas" [value]="marca.marca_id">
+                                    {{marca.marca_descricao}}</option>
+                            </select>
+                            <small class="text-danger" *ngIf="form.get('marca_id').touched">
+                                <span *ngIf="form.get('marca_id').hasError('required')">{{ 'PRODUTOS.SPANMARCAOBRIGATORIA' | translate}}</span>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <br/>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#marca-modal">
+                            <i class="fa fa-star" aria-hidden="true"></i>&nbsp;{{ 'PRODUTOS.BTNADICIONARMARCA' | translate}}
+                        </button>
+                        <div class="modal fade" id="marca-modal" tabindex="-1" role="dialog" aria-labelledby="modal-primary-label">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header state modal-primary text-center">
+                                        <img class="icone-modal-header pb-2" src="assets/img/icone/adiciona-marca.svg">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <h4 class="modal-title" id="modal-primary-label">
+                                                        {{ 'PRODUTOS.BTNADICIONARMARCA' | translate}}</h4>
+                                                    <label for="marca_descricao">{{ 'PRODUTOS.LBLTITULOMARCA' | translate}}</label>
+                                                    <input [formControl]="marca_descricao" class="form-control validation-field" type="text" name="marca_descricao" id="marca_descricao">
+                                                    <small class="text-danger" *ngIf="form.get('marca_descricao').touched">
+                                                        <span *ngIf="form.get('marca_descricao').hasError('required')">{{ 'PRODUTOS.SPANDESCRICAOMARCA' | translate}}</span>
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary w-100p ml-0" data-dismiss="modal" (click)="cadastrarMarca()">
+                                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp;{{ 'PRODUTOS.BTNADICIONAR' | translate}}</button>
+                                        <button type="button" class="btn btn-primary w-100p ml-4" data-dismiss="modal">
+                                            <i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;{{ 'PRODUTOS.BTNFECHAR' | translate}}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="categoria_id">{{ 'PRODUTOS.LBLCATEGORIA' | translate}}</label>
+                            <select [formControl]="categoria_id" name="categoria_id" id="categoria_id" class="form-control validation-field">
+                                <option value="">{{ 'PRODUTOS.OPTIONSELECIONE' | translate}}</option>
+                                <option *ngFor="let categoria of categorias" [value]="categoria.categoria_id">
+                                    {{categoria.categoria_descricao}}</option>
+                            </select>
+                            <small class="text-danger" *ngIf="form.get('categoria_id').touched">
+                                <span *ngIf="form.get('categoria_id').hasError('required')">{{ 'PRODUTOS.SPANCATEGORIAOBRIGATORIA' | translate}}</span>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="sub_categoria_id">{{ 'PRODUTOS.LBLSUBCATEGORIA' | translate}}</label>
+                            <select [formControl]="sub_categoria_id" name="sub_categoria_id" id="sub_categoria_id" class="form-control validation-field"
+                                (click)="listarSubcategorias()">
+                                <option value="">{{ 'PRODUTOS.OPTIONSELECIONE' | translate}}</option>
+                                <option *ngFor="let subcategoria of subcategorias" [value]="subcategoria.sub_categoria_id">
+                                    {{subcategoria.sub_categoria_descricao}}</option>
+                            </select>
+                            <small class="text-danger" *ngIf="form.get('sub_categoria_id').touched">
+                                <span *ngIf="form.get('sub_categoria_id').hasError('required')">{{ 'PRODUTOS.SPANSUBCATEGORIAOBRIGATORIA' | translate}}SubCategoria obrigatória</span>
+                            </small>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label for="quantidade">{{ 'PRODUTOS.LBLQUANTIDADE' | translate}}</label>
+                            <input [formControl]="quantidade" class="form-control validation-field" placeholder="" type="text" specialCharacters="false"
+                                name="quantidade" id="quantidade" mask="00000">
+                            <small class="text-danger" *ngIf="form.get('quantidade').touched">
+                                <span *ngIf="form.get('quantidade').hasError('required')">{{ 'PRODUTOS.SPANQUANTIDADEOBRIGATORIA' | translate}}</span>
+                                <span *ngIf="form.get('quantidade').hasError('')">{{ 'PRODUTOS.SPANQUANTIDADEINVALIDA' | translate}}</span>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="unidade_medida_id">{{ 'PRODUTOS.LBLUNIDADEMEDIDA' | translate}}</label>
+                            <select [formControl]="unidade_medida_id" name="unidade_medida_id" id="unidade_medida_id" class="form-control validation-field">
+                                <option value="">Selecione</option>
+                                <option *ngFor="let unidadeMedida of unidadesMedida" [value]="unidadeMedida.unidade_medida_id">
+                                    {{unidadeMedida.unidade_medida_descricao}}</option>
+                            </select>
+                            <small class="text-danger" *ngIf="form.get('unidade_medida_id').touched">
+                                <span *ngIf="form.get('unidade_medida_id').hasError('required')">{{ 'PRODUTOS.SPANUNIDADEMEDIDAOBRIGATORIA' | translate}}</span>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <br/>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#image-upload-modal">
+                            <i class="fa fa-camera"></i>&nbsp;{{ 'PRODUTOS.BTNCARREGARFOTO' | translate}}
+                        </button>
+                        <div class="modal fade" id="image-upload-modal" tabindex="-1" role="dialog" aria-labelledby="modal-primary-label">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header state modal-primary">
+                                        <h4 class="modal-title" id="modal-primary-label">
+                                            <i class="fa fa-camera"></i>{{ 'PRODUTOS.BTNCARREGARFOTO' | translate}}</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="file" (change)="fileChange(input)" #input class="img-upload-btn" />
+
+                                        <button class="btn btn-warning btn-block rounded-0" type="button">
+                                            <span *ngIf="!image">
+                                                <i class="fa fa-upload"></i>{{ 'PRODUTOS.BTNBUSCARFOTO' | translate}}</span>
+                                            <span *ngIf="image">
+                                                <i class="fa fa-refresh"></i>{{ 'PRODUTOS.BTNTROCARFOTO' | translate}}</span>
+                                        </button>
+
+                                        <div class="image-wrapper">
+                                            <i *ngIf="image" class="fa fa-times delete-img" (click)="removeImage()"></i>
+                                            <img [attr.src]="image" *ngIf="image" width="100%">
+                                            <img src="assets/img/app/no-image.png" *ngIf="!image" width="100%">
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary w-100p ml-0" data-dismiss="modal">
+                                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp;{{ 'PRODUTOS.ADICIONAR' | translate}}</button>
+                                        <button type="button" class="btn btn-primary w-100p ml-4" data-dismiss="modal">
+                                            <i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;{{ 'PRODUTOS.FECHAR' | translate}}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row pt-4">
+            <div class="col-sm-12 text-center">
+                <div class="form-group">
+                    <button class="btn btn-primary btn-center w-100p" type="submit">
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Salvar</button>
+
+                    <button class="btn btn-primary btn-center w-100p ml-4" type="button" (click)="voltar()">
+                        <i class="fa fa-reply" aria-hidden="true"></i>&nbsp;Voltar</button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>

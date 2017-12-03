@@ -1,0 +1,85 @@
+<div class="container-fluid formas-pagamento">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <img class="icone-form-header pb-2" src="assets/img/icone/icones-adm_produto-crate.svg">
+            <h2 class="title-cadastro pb-2">Minhas Formas de Pagamento</h2>
+        </div>
+    </div>
+
+    <div [hidden]="erros.length == 0" *ngFor="let erro of erros; index as i" class="alert alert-danger" role="alert">
+        <button type="button" class="close" (click)="closeAlert(i)">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>{{erro.item}}</strong> {{erro.descricao}}
+    </div>
+
+
+    <div [hidden]="sucessos.length == 0" *ngFor="let sucesso of sucessos; index as i" class="alert alert-success" role="alert">
+        <button type="button" class="close" (click)="closeAlertSucesso(i)">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>{{sucesso.item}}</strong>
+        <br/>{{sucesso.descricao}}
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+
+        <div class="row card-cadastro text-center mt-3">
+            <div class="col-sm-12 pb-2">
+                <h3>Formas de Pagamento SMARKET</h3>
+            </div>
+            <div class="col-sm-3 offset-sm-3">
+                <p>
+                    <img class=" pb-2" src="assets/img/icone/icone-pag-cartao.svg" width="150px">
+                </p>
+                <div class="form-group">
+                    <label class="custom-control custom-checkbox">
+                        <input [formControl]="pag_cartao" class="custom-control-input checkbox-warning" type="checkbox" disabled>
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">Pagamento com cartão (SMARKET)</span>
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <p>
+                    <img class=" pb-2" src="assets/img/icone/icone-pag-boleto.svg" width="150px">
+                </p>
+                <label class="custom-control custom-checkbox">
+                    <input [formControl]="pag_boleto" class="custom-control-input checkbox-warning" type="checkbox" disabled> 
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Pagamento com cartão (SMARKET)</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="row card-cadastro text-center mt-3">
+            <div class="col-sm-12 pb-2">
+                <h3>Adicionar Formas de Pagamento</h3>
+            </div>
+            <div class="col-sm-3 offset-sm-3">
+                <p>
+                    <img class=" pb-2" src="assets/img/icone/icone-pag-loja.svg" width="150px">
+                </p>
+                <div class="form-group">
+                    <label class="custom-control custom-checkbox">
+                        <input [formControl]="pag_loja" class="custom-control-input checkbox-warning" type="checkbox" (change)="atualizaFormaPagamento(form.value.pag_loja,3)">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">Pagar na loja (SMARKET)</span>
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <p>
+                    <img class=" pb-2" src="assets/img/icone/icone-pag-faturamento.svg" width="150px">
+                </p>
+                <label class="custom-control custom-checkbox">
+                    <input [formControl]="pag_faturamento" class="custom-control-input checkbox-warning" type="checkbox" (change)="atualizaFormaPagamento(form.value.pag_faturamento,2)">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Pagamento por Faturamento (exclusivo PJ)</span>
+                </label>
+            </div>
+        </div>
+
+    </form>
+</div>

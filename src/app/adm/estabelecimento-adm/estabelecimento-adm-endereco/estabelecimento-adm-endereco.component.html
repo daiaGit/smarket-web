@@ -1,0 +1,137 @@
+<div class="estabelecimento-adm-endereco">
+
+    <div [hidden]="erros.length == 0" *ngFor="let erro of erros; index as i" class="alert alert-danger" role="alert">
+        <button type="button" class="close" (click)="closeAlert(i)">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>{{erro.item}}</strong> {{erro.descricao}}
+    </div>
+
+
+    <div [hidden]="sucessos.length == 0" *ngFor="let sucesso of sucessos; index as i" class="alert alert-success" role="alert">
+        <button type="button" class="close" (click)="closeAlertSucesso(i)">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>{{sucesso.item}}</strong>
+        <br/>{{sucesso.descricao}}
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-12 pb-2">
+            <h3>Endereço</h3>
+            <hr/>
+        </div>
+
+        <!-- Div propaganda -->
+        <div class="col-sm-12">
+
+            <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="text-left mt-4">
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="cep">Cep</label>
+                            <input [formControl]="cep" name="cep" id="inputCep" class="form-control validation-field cep" type="text" placeholder="XXXXX-XXX"
+                                specialCharacters="false" mask="00000-000">
+                            <div id="cep" (click)="buscarCep()"></div>
+                            <small class="text-danger" *ngIf="form.get('cep').touched">
+                                <span *ngIf="form.get('cep').hasError('required')">Cep obrigatório</span>
+                                <span *ngIf="form.get('cep').hasError('invalidCep')">Cep inválido</span>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <label for="rua">Rua</label>
+                            <input [formControl]="rua" name="rua" id="rua" class="form-control validation-field" type="text">
+                            <small class="text-danger" *ngIf="form.get('rua').touched">
+                                <span *ngIf="form.get('rua').hasError('required')">Rua obrigatório</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label for="numero">Número</label>
+                            <input [formControl]="numero" name="numero" id="numero" class="form-control validation-field" type="text" specialCharacters="false"
+                                mask="0000000000">
+                            <small class="text-danger" *ngIf="form.get('numero').touched">
+                                <span *ngIf="form.get('numero').hasError('required')">Número Obrigatório</span>
+                            </small>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label for="complemento">Complemento</label>
+                            <input [formControl]="complemento" name="complemento" id="complemento" class="form-control validation-field" type="text">
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label for="bairro">Bairro</label>
+                            <input [formControl]="bairro" name="bairro" id="bairro" class="form-control validation-field" type="text">
+                            <small class="text-danger" *ngIf="form.get('bairro').touched">
+                                <span *ngIf="form.get('bairro').hasError('required')">Bairro obrigatório</span>
+                            </small>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="estado">Estado</label>
+                            <select [formControl]="estado" name="estado" id="estado" class="form-control validation-field" (change)="listarCidades()">
+                                <option value="">Selecione</option>
+                                <option *ngFor="let estado of estados" [value]="estado.estado_id">
+                                    {{estado.estado_descricao}}</option>
+                            </select>
+                            <small class="text-danger" *ngIf="form.get('estado').touched">
+                                <span *ngIf="form.get('estado').hasError('required')">Estado obrigatório</span>
+                            </small>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="cidade">Cidades</label>
+                            <select [formControl]="cidade" name="estado" id="cidade" class="form-control validation-field">
+                                <option value="">Selecione</option>
+                                <option *ngFor="let cidade of cidades" [value]="cidade.cidade_id">
+                                    {{cidade.cidade_descricao}}</option>
+                            </select>
+                            <small class="text-danger" *ngIf="form.get('cidade').touched">
+                                <span *ngIf="form.get('cidade').hasError('required')">Cidade obrigatório</span>
+                            </small>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row pt-4">
+                    <div class="col-sm-12 text-center">
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-center w-100p ml-4" type="submit">
+                                <i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Salvar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+[
+    {
+      "categoria_id": 1,
+      "categoria_descricao": "Teste1",
+      "categoria_img_b64": "Image1"
+    },
+    {
+      "categoria_id": 2,
+      "categoria_descricao": "Teste2",
+      "categoria_img_b64": "Image1"
+    },
+    {
+      "categoria_id": 3,
+      "categoria_descricao": "Teste3",
+      "categoria_img_b64": "Image1"
+    },
+    {
+      "categoria_id": 4,
+      "categoria_descricao": "Teste4",
+      "categoria_img_b64": "Image1"
+    }
+  ]

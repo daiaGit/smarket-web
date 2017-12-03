@@ -1,0 +1,67 @@
+.label-pedido{
+    color:#325475;
+    font-weight: 600;
+}
+
+.card-pagamento{
+    padding-top: 10px;
+}
+
+.card-body{
+    padding: 20px;
+}
+
+
+.card-pagamento-status{
+    border-radius: 5px 0px 0px 5px;
+    padding: 30px;
+}
+
+.card-pagamento-status.warning{
+    background-color: #fcf8e3;
+    border-color: #faf2cc;
+}
+
+.card-pagamento-status.danger{
+    background-color: #f2dede;
+    border-color: #ebcccc;
+}
+
+.card-pagamento-status.info{
+    background-color: #d9edf7;
+    border-color: #bcdff1;
+}
+
+.card-pagamento-status.success{
+    background-color: #dff0d8;
+    border-color: #d0e9c6;
+}
+
+.btn-pedido{
+    //border: solid 1px #F3A619;
+    padding: 15px;
+    text-transform: uppercase;
+    color: #55c4cc;
+    margin-top: 40px;
+    font-size: .9em;
+    min-height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn.detalhes{
+    background-color: #325475;
+    color: #fff;
+}
+.btn.detalhes:hover{
+    cursor: pointer;
+    background-color: #F3A619;
+}
+.card-pagamento-info {
+    padding: 20px;
+}
+
+.p20{
+    padding-bottom: 20px;
+}

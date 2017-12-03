@@ -1,0 +1,264 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div [hidden]="erros.length == 0" *ngFor="let erro of erros; index as i" class="alert alert-danger" role="alert">
+            <button type="button" class="close" (click)="closeAlert(i)">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>{{erro.item}}</strong>
+            <br/> {{erro.descricao}}
+        </div>
+    </div>
+
+    <div class="col-sm-12">
+        <div [hidden]="sucessos.length == 0" *ngFor="let sucesso of sucessos; index as i" class="alert alert-success" role="alert">
+            <button type="button" class="close" (click)="closeAlertSucesso(i)">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>{{sucesso.item}}</strong>
+            <br/> {{sucesso.descricao}}
+        </div>
+    </div>
+</div>
+
+<div class="row aprovacao-title">
+    <h2>
+        Aprovação de Cadastro
+    </h2>
+</div>
+
+<div class="row mail-container">
+    <div class="col-md-4 bg-white p-1">
+
+        <div class="form-group mb-0 pt-1 pb-1">
+            <div class="input-group">
+                <span class="input-group-addon bg-transparent border-0">
+                    <i class="fa fa-search ml-2 mr-1"></i>
+                </span>
+                <input class="form-control border-0" type="text" [(ngModel)]="searchText" placeholder="Buscar Estabelecimento...">
+            </div>
+        </div>
+
+        <div class="mail-list" perfect-scrollbar>
+            <div *ngFor="let estabelecimento of estabelecimentos | EstabelecimentoSearchPipe : searchText" class="mail-list-item pb-2 pt-2 pl-1 pr-2 transititon"
+                (click)="viewDetail(estabelecimento)">
+                <div class="media">
+                    <div class="media-body overflow-hidden">
+
+                        <div col-sm-11>
+                            <div class="d-flex justify-content-between">
+                                <h6 class="text-truncate mail-sender">
+                                    <i class="fa fa-building" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{estabelecimento.conjunto.estabelecimento.estabelecimento_razao_social}}</h6>
+                                <small class="mail-date">{{estabelecimento.conjunto.contrato.contrato_data_cadastro | date: 'dd/MM/yyyy' }}</small>
+                            </div>
+                            <p class="mail-subject mb-0 text-truncate">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{estabelecimento.conjunto.estabelecimento.estabelecimento_cnpj
+                                | CnpjFormat}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-8 bg-white mail-view-container">
+
+        <div class="mail-view p-3" perfect-scrollbar>
+
+            <div *ngIf="estabelecimento" class="mail-content">
+
+                <!-- modal inportar planilha-->
+                <div class="modal fade" id="primary-modal" tabindex="-1" role="dialog" aria-labelledby="modal-primary-label">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header state modal-primary">
+                                <h4 class="modal-title" id="modal-primary-label">
+                                    <i class="fa fa-camera"></i>Aprovar Cadastro</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <!--Formulário aprovação-->
+                                    <form class="row form-inline ng-untouched ng-pristine ng-valid" novalidate="">
+                                        <div class="form-group col-sm-4">
+                                            <label class="custom-control custom-radio">
+                                                <input class="custom-control-input radio-success" name="aprovacao" type="radio" (click)="setAprovacao(1)">
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">Aprovar</span>
+                                            </label>
+                                            <label class="custom-control custom-radio">
+                                                <input class="custom-control-input radio-danger" name="aprovacao" type="radio" (click)="setAprovacao(0)">
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">Reprovar</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="form-group col-sm-8">
+                                            <label for="input-1">Observação</label>
+                                            <input class="form-control" name="observacao" type="text" [(ngModel)]="aprovacao.aprovacao_observacao">
+                                        </div>
+
+                                    </form>
+                                    <!--Fim Formulário aprovação-->
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary btn-aprovacao-modal w-100p ml-0" data-dismiss="modal" (click)="aprovarCadastro(estabelecimento)">
+                                    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>Aprovar</button>
+                                <button type="button" class="btn btn-primary btn-aprovacao-modal w-100p ml-4" data-dismiss="modal">
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i>Fechar</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <button type="button" class="btn btn-primary btn-aprovacao" data-toggle="modal" data-target="#primary-modal">
+                    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp;Aprovar Cadastro
+                </button>
+                <hr/>
+
+                <div class="row" style="background-color:#ececec; padding: 5px">
+                    <div class="col-sm-1">
+                        <img src="../../../assets/img/icone/icone-estab-_loja.svg" width="60%">
+                    </div>
+                    <div class="col-sm-11">
+                        <h5>Estabelecimento</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p>
+                            <strong>Razão Social:</strong>&nbsp;{{estabelecimento.estabelecimento.estabelecimento_razao_social}}</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p>
+                            <strong>Nome Fantasia:</strong>&nbsp;{{estabelecimento.estabelecimento.estabelecimento_nome_fantasia}}</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <p>
+                            <strong>Cnpj:</strong>&nbsp;{{estabelecimento.estabelecimento.estabelecimento_cnpj | CnpjFormat}}</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <p>
+                            <strong>Inscrição Estadual:</strong>&nbsp;{{estabelecimento.estabelecimento.estabelecimento_inscricao_estadual}}</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <p>
+                            <strong>Inscrição Municipal:</strong>&nbsp;{{estabelecimento.estabelecimento.estabelecimento_inscricao_estadual}}</p>
+                    </div>
+                </div>
+
+                <div class="row" style="background-color:#ececec; padding: 5px">
+                    <div class="col-sm-1">
+                        <img src="../../../assets/img/icone/icone-estab-_mapa.svg" width="60%">
+                    </div>
+                    <div class="col-sm-11">
+                        <h5>Endereço</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-8">
+                        <p>
+                            <strong>Logradouro:</strong>&nbsp;{{estabelecimento.endereco.endereco_rua }}, {{estabelecimento.endereco.endereco_numero}}</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <p>
+                            <strong>Complemento:</strong>&nbsp;{{estabelecimento.endereco.endereco_complemento}}</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <p>
+                            <strong>Bairro:</strong>&nbsp;{{estabelecimento.endereco.endereco_bairro}}</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <p>
+                            <strong>Cidade:</strong>&nbsp;{{estabelecimento.endereco.cidade_descricao}}</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <p>
+                            <strong>Estado:</strong>&nbsp;{{estabelecimento.endereco.estado_sigla}}</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <p>
+                            <strong>Cep:</strong>&nbsp;{{estabelecimento.endereco.endereco_cep | CepFormat}}</p>
+                    </div>
+                </div>
+
+                <div class="row" style="background-color:#ececec; padding: 5px">
+                    <div class="col-sm-1">
+                        <img src="../../../assets/img/icone/icone-estab-_representante.svg" width="60%">
+                    </div>
+                    <div class="col-sm-11">
+                        <h5>Contratante</h5>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p>
+                            <strong>Nome:</strong>&nbsp;{{estabelecimento.funcionario.funcionario_nome}} {{estabelecimento.funcionario.funcionario_sobrenome}}</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p>
+                            <strong>CPF:</strong>&nbsp;{{estabelecimento.funcionario.funcionario_cpf | CpfFormat}}</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p>
+                            <strong>Cargo:</strong>&nbsp;{{estabelecimento.funcionario.cargo_descricao}}</p>
+                    </div>
+                </div>
+
+                <div class="row" style="background-color:#ececec; padding: 5px">
+                    <div class="col-sm-1">
+                        <img src="../../../assets/img/icone/icone-estab-_telefone.svg" width="60%">
+                    </div>
+                    <div class="col-sm-11">
+                        <h5>Contato</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <p>
+                            <strong>Telefone:</strong>&nbsp;({{estabelecimento.telefone.telefone_ddd}}) {{estabelecimento.telefone.telefone_numero
+                            | TelefoneFormat}}</p>
+                    </div>
+                    <div class="col-sm-12">
+                        <p>
+                            <strong>Email:</strong>&nbsp;{{estabelecimento.usuario_login}}</p>
+                    </div>
+                </div>
+
+                <div class="row" style="background-color:#ececec; padding: 5px">
+                    <div class="col-sm-1">
+                        <img src="../../../assets/img/icone/icone-estab-_contrato.svg" width="60%">
+                    </div>
+                    <div class="col-sm-11">
+                        <h5>Contrato</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p>
+                            <strong>Código:</strong>&nbsp;{{estabelecimento.contrato.contrato_id}}</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p>
+                            <strong>Data criação:</strong>&nbsp;{{estabelecimento.contrato.contrato_data_cadastro | date: 'dd/MM/yyyy'
+                            }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

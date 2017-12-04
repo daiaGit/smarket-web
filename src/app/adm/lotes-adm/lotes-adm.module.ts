@@ -10,6 +10,8 @@ import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { PipesModule } from '../../theme/pipes/pipes.module';
 import { Ng2CompleterModule } from "ng2-completer";
+import { CurrencyMaskModule } from "ng2-currency-mask";
+
 
 /** Componentes */
 import { LotesAdmEditComponent } from './lotes-adm-edit/lotes-adm-edit.component';
@@ -34,7 +36,8 @@ export const routes = [
     NgxPaginationModule,
     PipesModule,
     NgxMaskModule,
-    Ng2CompleterModule
+    Ng2CompleterModule,
+    CurrencyMaskModule
   ],
   declarations: [
     LotesAdmComponent,

@@ -44,6 +44,9 @@
             <button type="button" class="btn btn-primary" (click)="cadastrarProdutos()">
                 <i class="fa fa-shopping-basket"></i>&nbsp;&nbsp;Adicionar Produto
             </button>
+            <button type="button" class="btn btn-primary" (click)="listarLotes()">
+                <i class="fa fa-archive"></i>&nbsp;&nbsp;Meus Lotes
+            </button>
         </div>
 
     </div>
@@ -79,8 +82,10 @@
                             <td class="align-middle text-truncate">{{produto.categoria_descricao}}</td>
                             <td class="align-middle text-truncate">{{produto.quantidade}}{{produto.unidade_medida_sigla}}</td>
                             <td class="text-center">
-                                <i [hidden]="produto.produto_status == 1" class="fa fa-toggle-off fa-2x" aria-hidden="true" title="Ativar" (click)="ativarProduto(produto)" style="color:#0F253B;"></i>
-                                <i [hidden]="produto.produto_status == 0" class="fa fa-toggle-on fa-2x" aria-hidden="true" title="Desativar" (click)="desativarProduto(produto)" style="color:#0F253B;"></i>
+                                <i [hidden]="produto.produto_status == 1" class="fa fa-toggle-off fa-2x" aria-hidden="true" title="Ativar" (click)="ativarProduto(produto)"
+                                    style="color:#0F253B;"></i>
+                                <i [hidden]="produto.produto_status == 0" class="fa fa-toggle-on fa-2x" aria-hidden="true" title="Desativar" (click)="desativarProduto(produto)"
+                                    style="color:#0F253B;"></i>
                             </td>
                             <td class="text-center">
                                 <button class="btn btn-secondary btn-sm" (click)="editarProduto(produto)">

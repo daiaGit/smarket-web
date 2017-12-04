@@ -89,13 +89,13 @@ export class ProdutosAdmComponent implements OnInit {
           }
         }
         else {
-          msgErro.item = 'Erro ao buscar funcionários!';
+          msgErro.item = 'Erro ao buscar produtos!';
           msgErro.descricao = resp.descricao;
           this.erros.push(msgErro);
         }
       },
       err => {
-        msgErro.item = 'Erro ao buscar funcionários!';
+        msgErro.item = 'Erro ao buscar produtos!';
         msgErro.descricao = err;
         this.erros.push(msgErro);
       }
@@ -110,6 +110,10 @@ export class ProdutosAdmComponent implements OnInit {
   public adicionarLote(produto) {
     localStorage.setItem('produto', JSON.stringify(produto));
     this.router.navigate(['adm/lotes-adm/lotes-adm-create']);
+  }
+
+  public listarLotes() {
+    this.router.navigate(['adm/lotes-adm']);
   }
 
   public cadastrarProdutos() {

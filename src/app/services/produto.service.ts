@@ -82,21 +82,53 @@ export class ProdutoService {
 			.catch(this.httpUtil.processarErros);
 	}
 
-	setLote(lote: any): Observable<any> {
+	alterarProduto(produto: any, image: any): Observable<any> {
 
 		var usuario = JSON.parse(localStorage.getItem('usuarioAdm'));
 
 		var params = {
+			produto_id: produto.produto_id,
+			estabelecimento_id: usuario.estabelecimento_id,
+			produto_descricao: produto.produto_descricao,
+			produto_img_b64: image.changingThisBreaksApplicationSecurity,
+			marca_id: produto.marca_id,
+			categoria_id: produto.categoria_id,
+			unidade_medida_id: produto.unidade_medida_id,
+			sub_categoria_id: produto.sub_categoria_id,
+			quantidade: produto.quantidade
+		};
+
+		return this.http.post(this.httpUtil.url(this.path) + "alterarProduto", params)
+			.map(this.httpUtil.extrairDados)
+			.catch(this.httpUtil.processarErros);
+	}
+
+	setLote(lote: any): Observable<any> {
+
+		var usuario = JSON.parse(localStorage.getItem('usuarioAdm'));
+		var vender_para: number;
+
+		if (lote.vender_para_pf && lote.vender_para_pj) {
+			vender_para = 3;
+		}
+		else if (lote.vender_para_pf) {
+			vender_para = 1;
+		}
+		else if (lote.vender_para_pj) {
+			vender_para = 2;
+		}
+
+		var params = {
 			produto_id: lote.produto_id,
 			estabelecimento_id: usuario.estabelecimento_id,
-			lote_data_fabricacao: lote.lote_data_fabricacao.year + '-' + lote.lote_data_fabricacao.month + '-' + lote.lote_data_fabricacao.day,
-			lote_data_vencimento: lote.lote_data_vencimento.year + '-' + lote.lote_data_vencimento.month + '-' + lote.lote_data_vencimento.day,
+			lote_data_fabricacao: lote.lote_data_fabricacao,
+			lote_data_vencimento: lote.lote_data_vencimento,
 			lote_preco: lote.lote_preco,
 			lote_obs: lote.lote_obs,
 			lote_quantidade: lote.lote_quantidade,
 			qtd_minima_pj: lote.qtd_minima_pj,
 			qtd_minima_pf: lote.qtd_minima_pf,
-			vender_para: 1
+			vender_para: vender_para
 		};
 
 		return this.http.post(this.httpUtil.url(this.path) + "adicionarLote", params)
@@ -134,12 +166,11 @@ export class ProdutoService {
 	}
 
 	atualizarStatusLote(idLote: any, status: any): Observable<any> {
-		
-				var usuario = JSON.parse(localStorage.getItem('usuarioAdm'));
-		
-				return this.http.get(this.httpUtil.url(this.path) + "alterarStatusLote/" + idLote + '/' + usuario.estabelecimento_id + '/' + status)
-					.map(this.httpUtil.extrairDados)
-					.catch(this.httpUtil.processarErros);
-			}
 
+		var usuario = JSON.parse(localStorage.getItem('usuarioAdm'));
+
+		return this.http.get(this.httpUtil.url(this.path) + "alterarStatusLote/" + idLote + '/' + usuario.estabelecimento_id + '/' + status)
+			.map(this.httpUtil.extrairDados)
+			.catch(this.httpUtil.processarErros);
+	}
 }

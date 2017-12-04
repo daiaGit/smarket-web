@@ -28,7 +28,14 @@ export class LotesAdmCreateComponent implements OnInit {
   public sucessos: Array<any> = [];
   public erros: Array<any> = [];
   public exibirModal: boolean = false;
-  public modelPopup: NgbDateStruct = { day: new Date().getDate() - 3, month: new Date().getMonth() + 1, year: new Date().getFullYear() };
+  public modelPopup: NgbDateStruct = { 
+    day: new Date().getDate(), 
+    month: new Date().getMonth(), 
+    year: new Date().getFullYear() 
+  };
+
+  model: NgbDateStruct;
+  date: {day: number ,month: number, year: number};
 
   public produtos: Array<any> = [];
   public produto: any;
@@ -68,10 +75,10 @@ export class LotesAdmCreateComponent implements OnInit {
       lote_obs: [''],
       lote_quantidade: ['', Validators.compose([Validators.required])],
       unidade_medida_id: ['', Validators.compose([Validators.required])],
-      qtd_minima_pj: ['', Validators.compose([Validators.required])],
-      qtd_minima_pf: ['', Validators.compose([Validators.required])],
-      vender_para_pf: ['', Validators.compose([Validators.required])],
-      vender_para_pj: ['', Validators.compose([Validators.required])],
+      qtd_minima_pj: [''],
+      qtd_minima_pf: [''],
+      vender_para_pf: [''],
+      vender_para_pj: [''],
     });
 
     this.produto_id = this.form.controls['produto_id'];
@@ -117,9 +124,9 @@ export class LotesAdmCreateComponent implements OnInit {
       item: '',
       descricao: ''
     };
-    console.log('2');
+
     if (this.form.valid) {
-console.log('1');
+
       this.produtoService.setLote(values).subscribe(
         lote => {
           resp = lote['response'];
@@ -244,15 +251,6 @@ console.log('1');
         this.erros.push(msgErro);
       }
     );
-  }
-
-  public isWeekend(date: NgbDateStruct) {
-    const d = new Date(date.year, date.month - 1, date.day);
-    return d.getDay() === 0 || d.getDay() === 6;
-  }
-
-  public isDisabled(date: NgbDateStruct, current: { month: number }) {
-    return date.month !== current.month;
   }
 
 }

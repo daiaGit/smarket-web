@@ -38,6 +38,7 @@ export class ProdutosAdmEditComponent implements OnInit {
   public unidadesMedida: Array<any> = [];
   public produto: any;
 
+  public produto_id: AbstractControl;
   public produto_descricao: AbstractControl;
   public marca_id: AbstractControl;
   public marca_descricao: AbstractControl;
@@ -58,6 +59,7 @@ export class ProdutosAdmEditComponent implements OnInit {
     this.router = router;
 
     this.form = fb.group({
+      produto_id: ['', Validators.compose([Validators.required])],
       produto_descricao: ['', Validators.compose([Validators.required])],
       marca_descricao: [''],
       marca_id: ['', Validators.compose([Validators.required])],
@@ -67,6 +69,7 @@ export class ProdutosAdmEditComponent implements OnInit {
       sub_categoria_id: ['', Validators.compose([Validators.required])],
     });
 
+    this.produto_id = this.form.controls['produto_id'];
     this.produto_descricao = this.form.controls['produto_descricao'];
     this.marca_descricao = this.form.controls['marca_descricao'];
     this.marca_id = this.form.controls['marca_id'];
@@ -82,10 +85,12 @@ export class ProdutosAdmEditComponent implements OnInit {
     this.produto = JSON.parse(localStorage.getItem('produto'));
 
     if (this.produto && this.produto != null) {
+      console.log(this.produto);
       localStorage.removeItem('produto');
       this.listarCategorias();
       this.listarMarcas();
       this.listarUnidadesMedida();
+      this.form.controls['produto_id'].setValue(this.produto.produto_id);
       this.form.controls['produto_descricao'].setValue(this.produto.produto_descricao);
       this.form.controls['marca_descricao'].setValue(this.produto.marca_descricao);
       this.form.controls['marca_id'].setValue(this.produto.marca_id);
@@ -94,8 +99,9 @@ export class ProdutosAdmEditComponent implements OnInit {
       this.form.controls['unidade_medida_id'].setValue(this.produto.unidade_medida_id);
       this.form.controls['sub_categoria_id'].setValue(this.produto.sub_categoria_id);
       this.listarSubcategorias(this.form.controls['categoria_id'].value);
-      this.image = this.produto.produto_img_b64;
-      this.image = this.domSanitizer.bypassSecurityTrustResourceUrl(this.image);    
+      this.image = this.domSanitizer.bypassSecurityTrustResourceUrl(this.produto.produto_img_b64.changingThisBreaksApplicationSecurity);
+
+      
     }
     else {
       this.voltar();
@@ -115,7 +121,7 @@ export class ProdutosAdmEditComponent implements OnInit {
     };
 
     if (this.form.valid) {
-      this.produtoService.setProduto(values, this.image).subscribe(
+      this.produtoService.alterarProduto(values, this.image).subscribe(
         produto => {
           resp = produto['response'];
           if (resp.status == 'true') {
@@ -123,13 +129,13 @@ export class ProdutosAdmEditComponent implements OnInit {
             this.router.navigate(['/adm/produtos-adm']);
           }
           else {
-            msgErro.item = 'Erro ao efetuar o cadastro de produtos!';
+            msgErro.item = 'Erro ao efetuar a edição de produtos!';
             msgErro.descricao = resp.descricao;
             this.erros.push(msgErro);
           }
         },
         err => {
-          msgErro.item = 'Erro ao efetuar o cadastro de produtos!';
+          msgErro.item = 'Erro ao efetuar a edição de produtos!';
           msgErro.descricao = err;
           this.erros.push(msgErro);
         }

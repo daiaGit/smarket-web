@@ -136,6 +136,42 @@ export class ProdutoService {
 			.catch(this.httpUtil.processarErros);
 	}
 
+	alterarLote(lote: any): Observable<any> {
+		
+				var usuario = JSON.parse(localStorage.getItem('usuarioAdm'));
+				var vender_para: number;
+				console.log(lote);
+				if (lote.vender_para_pf && lote.vender_para_pj) {
+					vender_para = 3;
+				}
+				else if (lote.vender_para_pf) {
+					vender_para = 1;
+				}
+				else if (lote.vender_para_pj) {
+					vender_para = 2;
+				}
+
+				console.log(vender_para);
+		
+				var params = {
+					lote_id : lote.produto_id,
+					produto_id : lote.produto_id,
+					estabelecimento_id : usuario.estabelecimento_id,
+					lote_data_fabricacao : lote.lote_data_fabricacao,
+					lote_data_vencimento : lote.lote_data_vencimento,
+					lote_preco : lote.lote_preco,
+					lote_obs : lote.lote_obs,
+					lote_quantidade : lote.lote_quantidade,
+					qtd_minima_pj : lote.qtd_minima_pj,
+					qtd_minima_pf :  lote.qtd_minima_pf,
+					vender_para : vender_para		 
+				};
+		
+				return this.http.post(this.httpUtil.url(this.path) + "alterarLote", params)
+					.map(this.httpUtil.extrairDados)
+					.catch(this.httpUtil.processarErros);
+			}
+
 	doUploadProduto(planilhaProduto: any): Observable<any> {
 
 		var params = {

@@ -58,6 +58,15 @@ export class LotesAdmComponent implements OnInit {
 
     this.getLotes();
 
+    if (localStorage.getItem('msgSucessoLoteEdit')) {
+      var msgSucesso: any = {
+        item: 'Parabéns!',
+        descricao: localStorage.getItem('msgSucessoLoteEdit')
+      };
+      this.sucessos.push(msgSucesso);
+      localStorage.removeItem('msgSucessoLoteEdit')
+    }
+
   }
 
   public getLotes(): void {
@@ -142,13 +151,10 @@ export class LotesAdmComponent implements OnInit {
     );
   }
 
-  public editarProduto(produto) {
-    localStorage.setItem('produto', JSON.stringify(produto));
+  public editarLote(lote) {
+    console.log('lote');
+    localStorage.setItem('lote', JSON.stringify(lote));
     this.router.navigate(['adm/lotes-adm/lotes-adm-edit']);
-  }
-
-  public cadastrarLote() {
-    this.router.navigate(['adm/lotes-adm/lotes-adm-create']);
   }
 
   public importarPlanilhalotes() {

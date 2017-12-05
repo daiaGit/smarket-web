@@ -1,134 +1,191 @@
-<div class="container-fluid">
-        
-            <div class="row">
-        
-                <!-- Div formulario -->
-                <div class="col-sm-10 login-container-formulario offset-sm-1 text-center">
-                
-                    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="text-left mt-4">
-        
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="funcionario_nome">Nome</label>
-                                    <input [formControl]="funcionario_nome" class="form-control validation-field" type="text" name="nome" id="nome">
-                                    <small class="text-danger" *ngIf="form.get('funcionario_nome').touched">
-                                        <span *ngIf="form.get('funcionario_nome').hasError('required')">Nome obrigatório</span>
-                                        <span *ngIf="form.get('funcionario_nome').hasError('minlength')">Minimo 3 caracteres</span>
-                                        <span *ngIf="form.get('funcionario_nome').hasError('maxlength')">Máximo 150 caracteres</span>
-                                    </small>
-                                </div>
-                            </div>
-        
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="funcionario_sobrenome">Sobrenome</label>
-                                    <input [formControl]="funcionario_sobrenome" class="form-control validation-field" type="text" name="funcionario_sobrenome"
-                                        id="funcionario_sobrenome">
-                                    <small class="text-danger" *ngIf="form.get('funcionario_sobrenome').touched">
-                                        <span *ngIf="form.get('funcionario_sobrenomee').hasError('required')">Sobrenome obrigatório</span>
-                                        <span *ngIf="form.get('funcionario_sobrenome').hasError('minlength')">Minimo 3 caracteres</span>
-                                        <span *ngIf="form.get('funcionario_sobrenome').hasError('maxlength')">Máximo 150 caracteres</span>
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
-        
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="form-group">
-                                    <label for="funcionario_cpf">CPF</label>
-                                    <input [formControl]="funcionario_cpf" name="funcionario_cpf" id="funcionario_cpf" class="form-control validation-field"
-                                        placeholder="XXX.XXX.XXX-XX" type="text" specialCharacters="false" mask="000.000.000-00" readonly>
-                                    <small class="text-danger" *ngIf="form.get('funcionario_cpf').touched">
-                                        <span *ngIf="form.get('funcionario_cpf').hasError('required')">Cpf obrigatório</span>
-                                        <span *ngIf="form.get('funcionario_cpf').hasError('invalidCpf')">Cpf inválido</span>
-                                    </small>
-                                </div>
-                            </div>
-        
-                            <div class="col-sm-3">
-                                <div class="form-group">
-                                    <label for="cargo_id">Cargo</label>
-                                    <select [formControl]="cargo_id" name="cargo_id" id="cargo_id" class="form-control validation-field">
-                                        <option value="">Cargo</option>
-                                        <option *ngFor="let cargo of cargos" [value]="cargo.cargo_id">
-                                            {{cargo.cargo_descricao}}</option>
-                                    </select>
-                                    <small class="text-danger" *ngIf="form.get('cargo_id').touched">
-                                        <span *ngIf="form.get('cargo_id').hasError('required')">Cargo obrigatório</span>
-                                    </small>
-                                </div>
-                            </div>
-        
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="email_descricao">Email</label>
-                                    <input [formControl]="email_descricao" class="form-control validation-field" type="text" name="email_descricao" id="email_descricao">
-                                    <small class="text-danger" *ngIf="form.get('email_descricao').touched">
-                                        <span *ngIf="form.get('email_descricao').hasError('required')">Email obrigatório</span>
-                                        <span *ngIf="form.get('email_descricao').hasError('invalidEmail')">Email inválido</span>
-                                    </small>
-                                </div>
-                            </div>
-        
-                        </div>
-        
-                        <div class="row">
-                            <div class="col-sm-5">
-                                <div class="form-group">
-                                    <label for="tipo_telefone_id">Tipo de Telefone</label>
-                                    <select [formControl]="tipo_telefone_id" class="form-control validation-field" name="tipo_telefone_id" id="tipo_telefone_id"
-                                        (change)="setMaskFone()">
-                                        <option value="">Selecione</option>
-                                        <option *ngFor="let tipoTelefone of tiposTelefone" [value]="tipoTelefone.tipo_telefone_id">
-                                            {{tipoTelefone.tipo_telefone_descricao}}</option>
-                                    </select>
-                                    <small class="text-danger" *ngIf="form.get('tipo_telefone_id').touched">
-                                        <span *ngIf="form.get('tipo_telefone_id').hasError('required')">Tipo de telefone obrigatório</span>
-                                    </small>
-                                </div>
-                            </div>
-        
-                            <div class="col-sm-3">
-                                <div class="form-group">
-                                    <label for="telefone_ddd">DDD</label>
-                                    <input [formControl]="telefone_ddd" class="form-control validation-field" placeholder="(XX)" type="text" specialCharacters="false"
-                                        name="telefone_ddd" id="telefone_ddd" mask="(00)">
-                                    <small class="text-danger" *ngIf="form.get('telefone_ddd').touched">
-                                        <span *ngIf="form.get('telefone_ddd').hasError('required')">DDD obrigatório</span>
-                                        <span *ngIf="form.get('telefone_ddd').hasError('invalidDDD')">DDD inválido</span>
-                                    </small>
-                                </div>
-                            </div>
-        
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label for="telefone_numero">Telefone</label>
-                                    <input [formControl]="telefone_numero" class="form-control validation-field" name="telefone_numero" id="telefone_numero"
-                                        [placeholder]="maskFone.placeholder" type="text" specialCharacters="false" [mask]="maskFone.mask">
-                                    <small class="text-danger" *ngIf="form.get('telefone_numero').touched">
-                                        <span *ngIf="form.get('telefone_numero').hasError('required')">Telefone obrigatório</span>
-                                        <span *ngIf="form.get('telefone_numero').hasError('invalidTelefone')">Telefone inválido</span>
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
-        
-                        <div class="form-group">
-                            <button class="btn btn-block" type="submit">Editar</button>
-                        </div>
-        
-                    </form>
-        
-                    <div [hidden]="erros.length == 0" *ngFor="let erro of erros; index as i" class="alert alert-danger" role="alert">
-                        <button type="button" class="close" (click)="closeAlert(i)">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <strong>{{erro.item}}</strong> {{erro.descricao}}
-                    </div>
-        
+<div class="container-fluid lotes-create">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <img class="icone-form-header pb-2" src="assets/img/icone/icones-adm_lote-create.svg">
+            <h2 class="title-cadastro pb-2">Cadastrar Lotes</h2>
+        </div>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+
+        <div class="row card-cadastro">
+
+            <div class="col-sm-12">
+                <div [hidden]="erros.length == 0" *ngFor="let erro of erros; index as i" class="alert alert-danger" role="alert">
+                    <button type="button" class="close" (click)="closeAlert(i)">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>{{erro.item}}</strong>
+                    <br/> {{erro.descricao}}
                 </div>
             </div>
-        
+
+            <div class="col-sm-12">
+                <div [hidden]="sucessos.length == 0" *ngFor="let sucesso of sucessos; index as i" class="alert alert-success" role="alert">
+                    <button type="button" class="close" (click)="closeAlertSucesso(i)">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>{{sucesso.item}}</strong>
+                    <br/> {{sucesso.descricao}}
+                </div>
+            </div>
+
+            <!-- Div formulario -->
+            <div class="col-sm-12">
+
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="produto_descricao">Produto</label>
+                            <input [formControl]="produto_descricao" class="form-control validation-field" placeholder="" type="text" specialCharacters="false"
+                                name="produto_descricao" id="produto_descricao" disabled="true">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="lote_data_fabricacao">Data Fabricação</label>
+                            <input [formControl]="lote_data_fabricacao" class="form-control validation-field" type="date" name="lote_data_fabricacao"
+                                id="lote_data_fabricacao">
+                            <small class="text-danger" *ngIf="form.get('lote_data_fabricacao').touched">
+                                <span *ngIf="form.get('lote_data_fabricacao').hasError('required')">Data de fabricação obrigatória!</span>
+                            </small>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="lote_data_vencimento">Data Fabricação</label>
+                            <input [formControl]="lote_data_vencimento" class="form-control validation-field" type="date" name="lote_data_vencimento"
+                                id="lote_data_vencimento">
+                            <small class="text-danger" *ngIf="form.get('lote_data_vencimento').touched">
+                                <span *ngIf="form.get('lote_data_vencimento').hasError('required')">Data de vencimento obrigatória!</span>
+                            </small>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="lote_preco">Lote Preço</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">R$</div>
+                                <input [formControl]="lote_preco" class="form-control validation-field" type="text" name="lote_preco" id="lote_preco" currencyMask
+                                    [options]="{ prefix: '', thousands: '', decimal: '.' }">
+                            </div>
+                            <small class="text-danger" *ngIf="form.get('lote_preco').touched">
+                                <span *ngIf="form.get('lote_preco').hasError('required')">Preço obrigatório</span>
+                            </small>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <!-- example for pt-BR money -->
+
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label for="lote_quantidade">Lote Quantidade</label>
+                            <input [formControl]="lote_quantidade" class="form-control validation-field" type="text" name="lote_quantidade" id="lote_quantidade">
+                            <small class="text-danger" *ngIf="form.get('lote_quantidade').touched">
+                                <span *ngIf="form.get('lote_quantidade').hasError('required')">Quantidade obrigatória</span>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="unidade_medida_id">Unidade Medida</label>
+                            <select [formControl]="unidade_medida_id" name="unidade_medida_id" id="unidade_medida_id" class="form-control validation-field">
+                                <option value="">Selecione</option>
+                                <option *ngFor="let unidadeMedida of unidadesMedida" [value]="unidadeMedida.unidade_medida_id">
+                                    {{unidadeMedida.unidade_medida_descricao}}</option>
+                            </select>
+                            <small class="text-danger" *ngIf="form.get('unidade_medida_id').touched">
+                                <span *ngIf="form.get('unidade_medida_id').hasError('required')">Unidade Medida Obrigatório</span>
+                            </small>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-7">
+                        <div class="form-group">
+                            <label for="lote_obs">Lote Observação</label>
+                            <input [formControl]="lote_obs" class="form-control validation-field" placeholder="" type="text" specialCharacters="false"
+                                name="lote_obs" id="lote_quantidade">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
+
+        <div class="row card-cadastro text-center mt-3">
+            <div class="col-sm-12 pb-2">
+                <h3>Quem pode comprar?</h3>
+            </div>
+            <div class="col-sm-3 offset-sm-3">
+                <p>
+                    <img class=" pb-2" src="assets/img/icone/B2B.svg" width="200px">
+                </p>
+                <div class="form-group">
+                    <label for="unidade_medida_id">Quantidade Minima</label>
+                    <input [formControl]="qtd_minima_pj" class="form-control validation-field" placeholder="" type="text" specialCharacters="false"
+                        name="qtd_minima_pj" id="qtd_minima_pj" mask="00000" style="width:200px; margin:auto" [disabled]="!vender_para_pf">
+                    <small class="text-danger" *ngIf="form.get('qtd_minima_pj').touched">
+                        <span *ngIf="form.get('qtd_minima_pj').hasError('required')">Quantidade obrigatória</span>
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="custom-control custom-checkbox">
+                        <input [formControl]="vender_para_pf" class="custom-control-input checkbox-warning" type="checkbox" >
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">B2C</span>
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <p>
+                    <img class="pb-2" src="assets/img/icone/B2C.svg" width="200px">
+                </p>
+                <div class="form-group">
+                    <label for="unidade_medida_id">Quantidade Minima</label>
+                    <input [formControl]="qtd_minima_pf" class="form-control validation-field" placeholder="" type="text" specialCharacters="false"
+                        name="qtd_minima_pf" id="qtd_minima_pf" mask="00000" style="width:200px; margin:auto" [disabled]="!vender_para_pj">
+                    <small class="text-danger" *ngIf="form.get('qtd_minima_pf').touched">
+                        <span *ngIf="form.get('qtd_minima_pf').hasError('required')">Quantidade minima obrigatória</span>
+                    </small>
+                </div>
+                <label class="custom-control custom-checkbox">
+                    <input [formControl]="vender_para_pj" class="custom-control-input checkbox-warning" type="checkbox">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">B2B</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="row pt-4">
+            <div class="col-sm-12 text-center">
+                <div class="form-group">
+                    <button class="btn btn-primary btn-center w-100p" type="submit">
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Salvar</button>
+                    <button class="btn btn-primary btn-center w-100p ml-4" type="button">
+                        <i class="fa fa-reply" aria-hidden="true"></i>&nbsp;Voltar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>

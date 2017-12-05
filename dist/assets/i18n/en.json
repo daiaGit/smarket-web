@@ -1,0 +1,46 @@
+{
+    "IDIOMAS": {
+        "IDIOMAPORTUGES": "Portuguese",
+        "IDIOMAINGLES": "English",
+        "IDIOMAFRANCES": "French",
+        "IDIOMAESPANHOL": "Spanish"
+    },
+    "LOGIN": {
+        "LINKESQUECISENHA": "Forgot your password?",
+        "LABELEMAIL": "Email",
+        "LABELSENHA": "Password",
+        "BTNENTRAR": "Enter"
+    },
+    "LOGIN-VALIDATE": {
+        "EMAILREQUIRED": "Email required!",
+        "EMAILINVALID": "Invalid Email!",
+        "SENHAREQUIRED": "Password required!"
+    },
+    "PRODUTOS": {
+        "H2CADASTRARPRODUTO": "Register Product",
+        "LABELTITULOPRODUTO": "Product",
+        "SPANDESCRICAOPRODUTO": "Product Description Required",
+        "SPANMINCARACTERE": "Minimum 3 characters",
+        "SPANMAXCARACTERE": "Maximum 150 characters",
+        "LABELTITULOMARCA": "Brand",
+        "OPTIONSELECIONEMARCA": "Select the brand",
+        "SPANMARCAOBRIGATORIA": "Mandatory mark",
+        "BTNADICIONARMARCA": "Add Brand",
+        "SPANDESCRICAOMARCA": "Description of the Mandatory Mark",
+        "BTNADICATE": "Add",
+        "BTNFECHAR": "Close",
+        "LABELCATEGORIA": "Category",
+        "OPTIONSELECIONE": "Select",
+        "SPANCATEGORIAOBRIGATORIA": "Mandatory category",
+        "LABELSUBCATEGORIA": "Subcategory",
+        "SPANSUBCATEGORIAOBRIGATORIA": "Compulsory subcategory",
+        "LABELQUANTIDADE": "Quantity",
+        "SPANQUANTIDADEOBRIGATORIA": "Mandatory Quantity",
+        "SPANQUANTIDADEINVALIDA": "Quantity Invalid",
+        "LABELUNIDADEMEDIDA": "Unit Measure",
+        "SPANUNIDADEMEDIDAOBRIGATORIA": "Mandatory Unit of Measure",
+        "BTNCARREGARFOTO": "Upload Photo",
+        "BTNBUSCARFOTO": "Search Photo",
+        "BTNTROCARFOTO": "Switch Photo"
+    }
+}

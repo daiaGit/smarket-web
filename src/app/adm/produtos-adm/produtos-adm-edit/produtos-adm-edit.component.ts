@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgxMaskModule } from 'ngx-mask';
 import { DomSanitizer } from '@angular/platform-browser';
+import { LoadingBarService } from '@ngx-loading-bar/core';
 
 /** Services */
 import { MarcaService } from './../../../services/marca.service';
@@ -20,7 +21,8 @@ import { TipoTelefoneService } from './../../../services/tipos-telefone.service'
     CategoriaService,
     SubcategoriaService,
     ProdutoService,
-    MarcaService
+    MarcaService,
+    LoadingBarService
   ],
   encapsulation: ViewEncapsulation.None
 })
@@ -53,7 +55,8 @@ export class ProdutosAdmEditComponent implements OnInit {
     public subcategoriaService: SubcategoriaService,
     public produtoService: ProdutoService,
     public marcaService: MarcaService,
-    public domSanitizer: DomSanitizer
+    public domSanitizer: DomSanitizer,
+    private loadingBar: LoadingBarService
   ) {
 
     this.router = router;
@@ -99,9 +102,7 @@ export class ProdutosAdmEditComponent implements OnInit {
       this.form.controls['unidade_medida_id'].setValue(this.produto.unidade_medida_id);
       this.form.controls['sub_categoria_id'].setValue(this.produto.sub_categoria_id);
       this.listarSubcategorias(this.form.controls['categoria_id'].value);
-      this.image = this.domSanitizer.bypassSecurityTrustResourceUrl(this.produto.produto_img_b64.changingThisBreaksApplicationSecurity);
-
-      
+      this.image = this.domSanitizer.bypassSecurityTrustResourceUrl(this.produto.produto_img_b64.changingThisBreaksApplicationSecurity); 
     }
     else {
       this.voltar();
@@ -114,6 +115,8 @@ export class ProdutosAdmEditComponent implements OnInit {
   }
 
   public onSubmit(values: Object): void {
+    this.loadingBar.start();
+
     var resp: any;
     var msgErro: any = {
       item: '',

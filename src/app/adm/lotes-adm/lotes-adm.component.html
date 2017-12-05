@@ -2,8 +2,8 @@
 
     <div class="row">
         <div class="col-sm-12">
-            <img class="icone-form-header pb-2" src="assets/img/icone/icones-adm_produto-crate.svg">
-            <h2 class="title-cadastro pb-2">Meus Lotes</h2>
+            <img class="icone-form-header pb-2" src="assets/img/icone/icones-adm_lote-list.svg">
+            <h2 class="title-cadastro pb-2">Meus Lotes</h2>s
         </div>
     </div>
 
@@ -49,12 +49,12 @@
                     <thead>
                         <tr>
                             <th></th>
+                            <th>Código</th>
                             <th>Produto</th>
                             <th>Marca</th>
                             <th>Data Validade</th>
                             <th>Quantidade</th>
                             <th>Preco</th>
-                            <th>Status Produto</th>
                             <th>Editar</th>
                             <th>Status</th>
                         </tr>
@@ -65,17 +65,16 @@
                                 <i *ngIf="!lote.produto_img_b64" class="fa fa-archive fa-3x" aria-hidden="true"></i>
                                 <img *ngIf="lote.produto_img_b64" class="d-flex mr-3" [src]="lote.produto_img_b64" width="60">
                             </td>
+                            <td class="align-middle text-truncate text-center">
+                                    <span class="badge badge-pill badge-warning">{{lote.lote.lote_id}}</span>
+                                </td>
                             <td class="align-middle text-truncate">{{lote.produto_descricao}}</td>
                             <td class="align-middle text-truncate">{{lote.marca_descricao}}</td>
                             <td class="align-middle text-truncate">{{lote.lote.lote_data_fabricao}}&nbsp;até&nbsp;{{lote.lote.lote_data_vencimento}}</td>
                             <td class="align-middle text-truncate">{{lote.lote.lote_quantidade}} {{lote.lote.lote_quantidade}}</td>
                             <td class="align-middle text-truncate">R$&nbsp;{{lote.lote.lote_preco}}</td>
-                            <td class="align-middle text-truncate">
-                                <i [hidden]="lote.produto_status == 1" class="fa fa-ban fa-2x" aria-hidden="true"></i>
-                                <i [hidden]="lote.produto_status == 0" class="fa fa-circle-o fa-2x" aria-hidden="true"></i>
-                            </td>
                             <td class="align-middle">
-                                <button class="btn btn-secondary btn-sm">
+                                <button class="btn btn-secondary btn-sm" (click)="editarLote(lote)">
                                     <i class="fa fa-pencil fa-2x"></i>
                                 </button>
                             </td>

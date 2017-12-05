@@ -1,27 +1,27 @@
 export const single = [
   {
     name: 'Janeiro',
-    value: 40632
+    value: 406.32
   },
   {
     name: 'Fevereiro',
-    value: 49737
+    value: 497.37
   },
   {
     name: 'Março',
-    value: 36745
+    value: 367.45
   },
   {
     name: 'Abril',
-    value: 36240
+    value: 362.40
   },
   {
     name: 'Maio',
-    value: 33000
+    value: 330.00
   },
   {
     name: 'Junho',
-    value: 35800
+    value: 358.00
   }
 ];
 

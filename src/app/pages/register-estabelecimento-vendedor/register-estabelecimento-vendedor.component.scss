@@ -39,8 +39,7 @@ body{
 h2.registro{
     font-family: 'grobold';
     margin-top: 20px;
-    color: #F3A619;
-    text-shadow: 1px 1px 10px #000;    
+    color: #F3A619;  
 }
 
 .btn-entrar{
@@ -90,26 +89,6 @@ input.cep{
     font-size:14px;
     content:"\f002"
  }
-
- 
-input{
-    border: solid 1px #fff !important;
-    height: 40px !important;
-    font-size: 1.3em !important;
-    color: #333 !important;
-    border-radius: .4rem;
-}
-
-input:focus, select:focus{
-    border: solid 1px #D19422 !important;
-}
-
-select{
-    border: solid 1px #fff !important;
-    height: 40px !important;
-    font-size: 1.3em !important;
-    color: #333 !important;
-}
 
 button.btn.btn-block {
     cursor: pointer;
@@ -200,3 +179,5 @@ button.btn.btn-block:hover{
     66.666% { opacity: 1}
     100% { opacity: 0}
   }
+
+  

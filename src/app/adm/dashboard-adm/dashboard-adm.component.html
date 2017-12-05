@@ -1,11 +1,122 @@
+<div class="row" *ngIf="faturamentoPorEstabelecimento.length > 0">
+    <div class="card-indicativo m-1">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="title-indicativo pb-2">Faturamento PF</h2>
+            </div>
+            <div class="col-sm-4">
+                <img src="assets/img/icone/indicativo-_lucro-pf.svg" style="width:150%; max-width: 100px;">
+            </div>
+            <div class="col-sm-8">
+                <h2>
+                    <strong>R$</strong>{{faturamentoPorEstabelecimento[0].total_lucro}}</h2>
+            </div>
+        </div>
+    </div>
 
-<app-info-panels></app-info-panels>
+    <div class="card-indicativo m-1">
+        <div class="row ">
+            <div class="col-sm-12">
+                <h2 class="title-indicativo pb-2">Pedidos PF</h2>
+            </div>
+            <div class="col-sm-4">
+                <img src="assets/img/icone/indicativo-_pedidos-pf.svg" style="width:150%; max-width: 100px;">
+            </div>
+            <div class="col-sm-8">
+                <h2>
+                {{faturamentoPorEstabelecimento[0].total_pedidos}} pedido(s)</h2>
+            </div>
+        </div>
+    </div>
 
-<app-info-cards></app-info-cards>
+    <div class="card-indicativo m-1">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="title-indicativo pb-2">Faturamento PJ</h2>
+            </div>
+            <div class="col-sm-4">
+                <img src="assets/img/icone/indicativo-_lucro-pj.svg" style="width:150%; max-width: 100px;">
+            </div>
+            <div class="col-sm-8">
+                <h2>
+                    <strong>R$</strong>{{faturamentoPorEstabelecimento[1].total_lucro}}</h2>
+            </div>
+        </div>
+    </div>
 
-<div class="row">
-    <div class="col-lg-7 mb-4">
-        <app-todo></app-todo>
-    </div>   
+    <div class="card-indicativo m-1">
+        <div class="row ">
+            <div class="col-sm-12">
+                <h2 class="title-indicativo pb-2">Pedidos PJ</h2>
+            </div>
+            <div class="col-sm-4">
+                <img src="assets/img/icone/indicativo-_pedidos-pj.svg" style="width:150%; max-width: 100px;">
+            </div>
+            <div class="col-sm-8">
+                <h2>
+                    {{faturamentoPorEstabelecimento[1].total_pedidos}} pedido(s)</h2>
+            </div>
+        </div>
+    </div>
+
 </div>
 
+<div class="row text-center mt-4">
+
+    <div class="col-xl-3 col-lg-6 mb-4" style="cursor: pointer;" (click)="verProdutos()">
+        <div class="card border-0 overflow-hidden">
+            <img alt="Card image" class="card-img w-100" src="assets/img/app/3.jpg">
+            <div class="card-img-overlay overlay-warning">
+                <h4 class="card-title">Meus Produtos</h4>
+                <br/>
+                <p>
+                    <i class="fa fa-shopping-basket fa-4x" aria-hidden="true"></i>
+                </p>
+                <p class="card-text">Cadastre aqui todos seus produtos</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-lg-6 mb-4" style="cursor: pointer;" (click)="verLotes()">
+        <div class="card border-0 overflow-hidden">
+            <img alt="Card image" class="card-img w-100" src="assets/img/app/3.jpg">
+            <div class="card-img-overlay overlay-warning">
+                <h4 class="card-title">Meus Lotes</h4>
+                <br/>
+                <p>
+                    <i class="fa fa-archive fa-4x" aria-hidden="true"></i>
+                </p>
+                <p class="card-text">Veja aqui todos seus lotes</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-lg-6 mb-4" style="cursor: pointer;" (click)="verFuncionarios()">
+        <div class="card border-0 overflow-hidden">
+            <img alt="Card image" class="card-img w-100" src="assets/img/app/3.jpg">
+            <div class="card-img-overlay overlay-warning">
+                <h4 class="card-title">Meus Funcionários</h4>
+                <br/>
+                <p>
+                    <i class="fa fa-user fa-4x" aria-hidden="true"></i>
+                </p>
+                <p class="card-text">Insira aqui seus funcionários</p>
+            </div>
+        </div>
+    </div>
+ 
+    <div class="col-xl-3 col-lg-6 mb-4" style="cursor: pointer;" (click)="verPedidos()">
+        <div class="card border-0 overflow-hidden">
+            <img alt="Card image" class="card-img w-100" src="assets/img/app/3.jpg">
+            <div class="card-img-overlay overlay-warning">
+                <h4 class="card-title">Meus Pedidos</h4>
+                <br/>
+                <p>
+                    <i class="fa fa-bell fa-4x" aria-hidden="true"></i>
+                </p>
+                <p class="card-text">Veja aqui todos seus pedidos</p>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -6,6 +6,7 @@ import { IMultiSelectOption, IMultiSelectSettings, IMultiSelectTexts } from 'ang
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { HttpModule } from '@angular/http';
 import { DomSanitizer } from '@angular/platform-browser';
+import { LoadingBarService } from '@ngx-loading-bar/core';
 
 /** Services */
 
@@ -20,7 +21,8 @@ import { ProdutoService } from './../../services/produto.service';
   encapsulation: ViewEncapsulation.None,
   providers: [
     MenuService,
-    ProdutoService
+    ProdutoService,
+    LoadingBarService
   ]
 })
 
@@ -41,7 +43,8 @@ export class ProdutosAdmComponent implements OnInit {
     public produtosService: ProdutoService,
     public menuService: MenuService,
     public domSanitizer: DomSanitizer,
-    public modalService: NgbModal) {
+    public modalService: NgbModal,
+    private loadingBar: LoadingBarService) {
 
     this.menuItems = this.menuService.getVerticalMenuItems();
     this.menuItems.forEach(item => {
@@ -69,6 +72,7 @@ export class ProdutosAdmComponent implements OnInit {
   }
 
   public getProdutos(): void {
+    this.loadingBar.start();
     var resp: any;
 
     var msgErro: any = {
@@ -77,9 +81,10 @@ export class ProdutosAdmComponent implements OnInit {
     };
 
     this.produtosService.getProdutosEstabelecimento().subscribe(
-      produtos => {
+      produtos => {       
         resp = produtos['response'];
         if (resp['status'] == 'true') {
+          this.loadingBar.complete();
           this.produtos = resp.objeto;
           console.log(this.produtos);
           for (let i in this.produtos) {
@@ -89,12 +94,14 @@ export class ProdutosAdmComponent implements OnInit {
           }
         }
         else {
+          this.loadingBar.complete();
           msgErro.item = 'Erro ao buscar produtos!';
           msgErro.descricao = resp.descricao;
           this.erros.push(msgErro);
         }
       },
       err => {
+        this.loadingBar.complete();
         msgErro.item = 'Erro ao buscar produtos!';
         msgErro.descricao = err;
         this.erros.push(msgErro);

@@ -48,12 +48,13 @@ export const horizontalMenuShopItems = [
     new Menu (7, 'Meu Perfil', '/shop/meu-perfil-pf', null, 'user-circle', null, false, 0),
 ]
 
-export const verticalMenuEstabelecimentoItems = [ 
+export const verticalMenuEstabelecimentoItems = [
+    new Menu (0, 'Home', '/adm/dashboard-adm', null, 'home', null, false, 0),
     new Menu (1, 'Meu Estabelecimento', null, null, 'building', null, true, 0),
     new Menu (10, 'Funcionários', '/adm/funcionarios-adm', null, 'user', null, false, 1),
     new Menu (11, 'Estabelecimento', '/adm/estabelecimento-adm', null, 'cog', null, false, 1),
     new Menu (2, 'Minha Loja', null, null, 'briefcase', null, true, 0),
-    new Menu (20, 'Produtos', '/adm/produtos-adm', null, 'circle', null, false, 2),
+    new Menu (20, 'Produtos', '/adm/produtos-adm', null, 'shopping-basket', null, false, 2),
     new Menu (21, 'Lotes', '/adm/lotes-adm', null, 'archive', null, false, 2),
     new Menu (22, 'Formas Entrega', '/adm/formas-pagamento', null, 'truck', null, false, 2),
     new Menu (23, 'Formas Pagamento', '/adm/formas-entrega', null, 'credit-card', null, false, 2),
@@ -65,11 +66,12 @@ export const verticalMenuEstabelecimentoItems = [
 ]
 
 export const horizontalMenuEstabelecimentoItems = [
+    new Menu (0, 'Home', '/adm/dashboard-adm', null, 'home', null, false, 0),
     new Menu (1, 'Meu Estabelecimento', null, null, 'building', null, true, 0),
     new Menu (10, 'Funcionários', '/adm/funcionarios-adm', null, 'user', null, false, 1),
     new Menu (11, 'Estabelecimento', '/adm/estabelecimento-adm', null, 'cog', null, false, 1),
     new Menu (2, 'Minha Loja', null, null, 'briefcase', null, true, 0),
-    new Menu (20, 'Produtos', '/adm/produtos-adm', null, 'circle', null, false, 2),
+    new Menu (20, 'Produtos', '/adm/produtos-adm', null, 'shopping-basket', null, false, 2),
     new Menu (21, 'Lotes', '/adm/lotes-adm', null, 'archive', null, false, 2),
     new Menu (22, 'Formas Entrega', '/adm/formas-pagamento', null, 'truck', null, false, 2),
     new Menu (23, 'Formas Pagamento', '/adm/formas-entrega', null, 'credit-card', null, false, 2),

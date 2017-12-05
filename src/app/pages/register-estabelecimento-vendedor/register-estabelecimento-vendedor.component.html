@@ -1,423 +1,464 @@
 <div class="container-fluid">
-    
-        <div class="row">
-    
-            <!-- Div propaganda -->
-            <div class="col-sm-5 text-center login-container-propaganda login-bg-primary">
-                <div class='slide1'>
-                        <br><br><br><br>
-                        <div>
-                            <img class="login-logotipo" src="../../../assets/img/logo/logo-completo-branco.png">
-                        </div>
-                        <br><br><br><br><br><br><br><br><br><br><br><br><br>
-                        <h1 class="destaque-white">
-                            SMARKET o mercado que faz toda diferença!
-                        </h1>
+
+    <div class="row">
+
+        <!-- Div propaganda -->
+        <div class="col-sm-5 text-center login-container-propaganda login-bg-primary">
+            <div class='slide1'>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div>
+                    <img class="login-logotipo" src="../../../assets/img/logo/logo-completo-branco.png">
                 </div>
-                <div class='slide2'>
-                        <br><br><br><br>
-                        <div>
-                            <img class="login-logotipo" src="../../../assets/img/logo/logo-completo-branco.png">
-                        </div>
-                        <br><br><br><br><br><br><br><br><br><br><br><br><br>
-                        <h1 class="destaque-white">
-                            SMARKET o mercado que faz toda diferença!
-                        </h1>
-                </div> 
-                <div class='slide3'>
-                        <br><br><br><br>
-                        <div>
-                            <img class="login-logotipo" src="../../../assets/img/logo/logo-completo-branco.png">
-                        </div>
-                        <br><br><br><br><br><br><br><br><br><br><br><br><br>
-                        <h1 class="destaque-white">
-                            SMARKET o mercado que faz toda diferença!
-                        </h1>
-                </div>  
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <h1 class="destaque-white">
+                    SMARKET o mercado que faz toda diferença!
+                </h1>
             </div>
-    
-    
-            <!-- Div propaganda -->
-            <div class="col-sm-5 offset-sm-1 login-container-formulario text-center">
-                <h2 class="registro">Registre sua LOJA</h2>
-
-                <hr/>                
-
-                <a routerLink="/login-consumidor" class="transition"><strong>Já possui cadastro? Faça seu Login!</strong></a>
-    
-                <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="text-left mt-4">
-    
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <label for="razaoSocial">Razão Social</label>
-                                <input [formControl]="razaoSocial" class="form-control validation-field" name="razaoSocial" id="razaoSocial" type="text">
-                                <small class="text-danger" *ngIf="form.get('razaoSocial').touched">
-                                                                        <span *ngIf="form.get('razaoSocial').hasError('required')">Razão Social Obrigatória</span>
-                                                                        <span *ngIf="form.get('razaoSocial').hasError('minlength')">Minimo 3  caracteres</span>  
-                                                                        <span *ngIf="form.get('razaoSocial').hasError('maxlength')">Maximo 150 caracteres </span>                              
-                                                                    </small>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <label for="nomeFantasia">Nome Fantasia</label>
-                                <input [formControl]="nomeFantasia" class="form-control validation-field" name="nomeFantasia" id="nomeFantasia" type="text">
-                                <small class="text-danger" *ngIf="form.get('nomeFantasia').touched">
-                                                                            <span *ngIf="form.get('nomeFantasia').hasError('required')">Nome Fantasia Obrigatório</span>
-                                                                            <span *ngIf="form.get('nomeFantasia').hasError('minlength')">Minimo 3  caracteres</span>  
-                                                                            <span *ngIf="form.get('nomeFantasia').hasError('maxlength')">Maximo 150 caracteres </span>                              
-                                                                        </small>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="tipoEstabelecimento">Tipo de Estabelecimento</label>
-                                <select [formControl]="tipoEstabelecimento" name="tipoEstabelecimento" id="tipoEstabelecimento" class="form-control validation-field">
-                                                        <option value="">Selecione</option>
-                                                        <option *ngFor="let tipoEstabelecimento of tiposEstabelecimento" 
-                                                        [value]="tipoEstabelecimento.tipo_estabelecimento_id">
-                                                        {{tipoEstabelecimento.tipo_estabelecimento_descricao}}</option>
-                                                </select>
-                                <small class="text-danger" *ngIf="form.get('tipoEstabelecimento').touched">
-                                                    <span *ngIf="form.get('tipoEstabelecimento').hasError('required')">Tipo de estabelecimento obrigatório</span>
-                                                </small>
-                            </div>
-                        </div>
-    
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="cnpj">CNPJ</label>
-                                <input [formControl]="cnpj" name="cnpj" id="cnpj" class="form-control validation-field" placeholder="XX.XXX.XXX/XXX-XX" type="text"
-                                    specialCharacters="false" mask="00.000.000/0000-00">
-                                <small class="text-danger" *ngIf="form.get('cnpj').touched">
-                                                                <span *ngIf="form.get('cnpj').hasError('required')">Cnpj obrigatório</span>
-                                                                <span *ngIf="form.get('cnpj').hasError('invalidCnpj')">Cnpj inválido</span>                            
-                                                            </small>
-                            </div>
-                        </div>
-                    </div>
-    
-                    
-                    <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="isncricaoEstadual">Inscrição Estadual</label>
-                                    <input [formControl]="inscricaoEstadual" name="inscricaoEstadual" id="inscricaoEstadual" class="form-control validation-field"
-                                        type="text">
-                                    <small class="text-danger" *ngIf="form.get('inscricaoEstadual').touched">
-                                                                            <span *ngIf="form.get('inscricaoEstadual').hasError('required')">Inscrição estudal obrigatório</span>                         
-                                                                        </small>
-                                </div>
-                            </div>
-        
-                  
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="isncricaoMunicipal">Inscrição Municipal</label>
-                                        <input [formControl]="inscricaoMunicipal" name="inscricaoMunicipal" id="inscricaoMunicipal" class="form-control validation-field"
-                                            type="text">
-                                        <small class="text-danger" *ngIf="form.get('inscricaoMunicipal').touched">
-                                                                                    <span *ngIf="form.get('inscricaoMunicipal').hasError('required')">Incrição Municipal Obrigatório</span>                                                                                                
-                                                                                </small>
-                                    </div>
-                           
-                            </div>
-                        </div>
-    
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label for="cep">Cep</label>
-                                <input  [formControl]="cep" name="cep" id="inputCep" class="form-control validation-field cep" type="text" 
-                                        placeholder="XXXXX-XXX" specialCharacters="false" mask="00000-000" >
-                                        <div id="cep" (click)="buscarCep()"></div>
-                                <small class="text-danger" *ngIf="form.get('cep').touched">
-                                                                                <span *ngIf="form.get('cep').hasError('required')">Cep obrigatório</span>   
-                                                                                <span *ngIf="form.get('cep').hasError('invalidCep')">Cep inválido</span>                        
-                                                                            </small>
-                            </div>
-                        </div>
-    
-                        <div class="col-sm-8">
-                            <div class="form-group">
-                                <label for="rua">Rua</label>
-                                <input [formControl]="rua" name="rua" id="rua" class="form-control validation-field" type="text">
-                                <small class="text-danger" *ngIf="form.get('rua').touched">
-                                                                            <span *ngIf="form.get('rua').hasError('required')">Rua obrigatório</span>                         
-                                                                        </small>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="row">
-    
-                        <div class="col-sm-2">
-                            <div class="form-group">
-                                <label for="numero">Número</label>
-                                <input  [formControl]="numero" name="numero" id="numero" class="form-control validation-field" type="text"
-                                        specialCharacters="false" mask="0000000000">
-                                <small class="text-danger" *ngIf="form.get('numero').touched">
-                                                                                        <span *ngIf="form.get('numero').hasError('required')">Número Obrigatório</span>                                                                                                
-                                                                                    </small>
-                            </div>
-                        </div>
-    
-    
-                        <div class="col-sm-5">
-                            <div class="form-group">
-                                <label for="complemento">Complemento</label>
-                                <input [formControl]="complemento" name="complemento" id="complemento" class="form-control validation-field" type="text">
-                            </div>
-                        </div>
-    
-                        
-                        <div class="col-sm-5">
-                                <div class="form-group">
-                                    <label for="bairro">Bairro</label>
-                                    <input [formControl]="bairro" name="bairro" id="bairro" class="form-control validation-field" type="text">
-                                    <small class="text-danger" *ngIf="form.get('bairro').touched">
-                                                                                <span *ngIf="form.get('bairro').hasError('required')">Bairro obrigatório</span>                         
-                                                                            </small>
-                                </div>
-                            </div>
-    
-    
-                    </div>
-    
-                    <div class="row">                   
-    
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="estado">Estado</label>
-                                <select [formControl]="estado" name="estado" id="estado" class="form-control validation-field" (change)="listarCidades()">
-                                                                            <option value="">Selecione</option>
-                                                                            <option *ngFor="let estado of estados" 
-                                                                            [value]="estado.estado_id">
-                                                                            {{estado.estado_descricao}}</option>
-                                                                    </select>
-                                <small class="text-danger" *ngIf="form.get('estado').touched">
-                                                                        <span *ngIf="form.get('estado').hasError('required')">Estado obrigatório</span>
-                                                                    </small>
-                            </div>
-                        </div>
-    
-    
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="cidade">Cidades</label>
-                                <select [formControl]="cidade" name="estado" id="cidade" class="form-control validation-field">
-                                                                                <option value="">Selecione</option>
-                                                                                <option *ngFor="let cidade of cidades" 
-                                                                                [value]="cidade.cidade_id">
-                                                                                {{cidade.cidade_descricao}}</option>
-                                                                        </select>
-                                <small class="text-danger" *ngIf="form.get('cidade').touched">
-                                                                            <span *ngIf="form.get('cidade').hasError('required')">Cidade obrigatório</span>
-                                                                        </small>
-                            </div>
-                        </div>
-    
-    
-                    </div>
-    
-                    <div class="row">
-                            <div class="col-sm-5">
-                                    <div class="form-group">
-                                        <label for="tipoTelefone">Tipo de Telefone</label>
-                                        <select [formControl]="tipoTelefone" class="form-control validation-field" name="tipoTelefone" id="tipoTelefone" (change)="setMaskFone()">
-                                                                            <option value="">Selecione</option>
-                                                                            <option *ngFor="let tipoTelefone of tiposTelefone" 
-                                                                            [value]="tipoTelefone.tipo_telefone_id">
-                                                                            {{tipoTelefone.tipo_telefone_descricao}}</option>
-                                                                    </select>
-                                        <small class="text-danger" *ngIf="form.get('tipoTelefone').touched">
-                                                                        <span *ngIf="form.get('tipoTelefone').hasError('required')">Tipo de telefone obrigatório</span>
-                                                                    </small>
-                                    </div>
-                                </div>
-    
-                        <div class="col-sm-3">
-                            <div class="form-group">
-                                <label for="ddd">DDD</label>
-                                <input [formControl]="ddd" name="ddd" id="ddd" class="form-control validation-field" placeholder="(XX)" type="text" specialCharacters="false"
-                                    mask="(00)">
-                                <small class="text-danger" *ngIf="form.get('ddd').touched">
-                                                                    <span *ngIf="form.get('ddd').hasError('required')">DDD obrigatório</span>
-                                                                    <span *ngIf="form.get('ddd').hasError('invalidDDD')">DDD inválido</span>
-                                                                </small>
-                            </div>
-                        </div>
-    
-                        <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label for="telefone">Telefone Comercial</label>
-                                    <input [formControl]="telefone" class="form-control validation-field" name="telefone" id="telefone" [placeholder]="maskFone.placeholder"
-                                        type="text" specialCharacters="false" [mask]="maskFone.mask">
-                                    <small class="text-danger" *ngIf="form.get('telefone').touched">
-                                                                        <span *ngIf="form.get('telefone').hasError('required')">Telefone obrigatório</span>
-                                                                        <span *ngIf="form.get('telefone').hasError('invalidTelefone')">Telefone inválido</span>
-                                                                    </small>
-                                </div>
-                            </div>
-                    </div>
-    
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <label for="funcionarioEmail">Email Comercial</label>
-                                <input [formControl]="funcionarioEmail" name="funcionarioEmail" id="funcionarioEmail" class="form-control validation-field"
-                                    type="text">
-                                <small class="text-danger" *ngIf="form.get('funcionarioEmail').touched">
-                                                <span *ngIf="form.get('funcionarioEmail').hasError('required')">Email obrigatório</span>
-                                                <span *ngIf="form.get('funcionarioEmail').hasError('invalidEmail')">Email inválido</span>
-                                            </small>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="funcionarioNome">Nome</label>
-                                <input [formControl]="funcionarioNome" name="funcionarioNome" id="funcionarioNome" class="form-control validation-field"
-                                    placeholder="Nome" type="text">
-                                <small class="text-danger" *ngIf="form.get('funcionarioNome').touched">
-                                                                <span *ngIf="form.get('funcionarioNome').hasError('required')">Nome obrigatório</span>
-                                                                <span *ngIf="form.get('funcionarioNome').hasError('minlength')">Minimo 3 caracteres</span>                            
-                                                                <span *ngIf="form.get('funcionarioNome').hasError('maxlength')">Máximo 150 caracteres</span>
-                                                            </small>
-                            </div>
-                        </div>
-    
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="funcionarioSobrenome">Sobrenome</label>
-                                <input [formControl]="funcionarioSobrenome" name="funcionarioSobrenome" id="funcionarioSobrenome" class="form-control validation-field"
-                                    placeholder="Sobrenome" type="text">
-                                <small class="text-danger" *ngIf="form.get('funcionarioSobrenome').touched">
-                                                                <span *ngIf="form.get('funcionarioSobrenome').hasError('required')">Sobrenome obrigatório</span>
-                                                                <span *ngIf="form.get('funcionarioSobrenome').hasError('minlength')">Minimo 3 caracteres</span>                            
-                                                                <span *ngIf="form.get('funcionarioSobrenome').hasError('maxlength')">Máximo 150 caracteres</span>
-                                                            </small>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="ddd">CPF</label>
-                                <input [formControl]="funcionarioCpf" name="funcionarioCpf" id="funcionarioCpf" class="form-control validation-field" placeholder="XXX.XXX.XXX-XX"
-                                    type="text" specialCharacters="false" mask="000.000.000-00">
-                                <small class="text-danger" *ngIf="form.get('funcionarioCpf').touched">
-                                                                <span *ngIf="form.get('funcionarioCpf').hasError('required')">Cpf obrigatório</span>
-                                                                <span *ngIf="form.get('funcionarioCpf').hasError('invalidCpf')">Cpf inválido</span>                            
-                                                            </small>
-                            </div>
-                        </div>
-    
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="funcionarioCargo">Cargo</label>
-                                <select [formControl]="funcionarioCargo" name="funcionarioCargo" id="funcionarioCargo" class="form-control validation-field">                  
-                                    <option value="">Cargo</option>
-                                                        <option *ngFor="let cargo of cargos" 
-                                                        [value]="cargo.cargo_id">
-                                                        {{cargo.cargo_descricao}}</option>
-                                                </select>
-                                <small class="text-danger" *ngIf="form.get('funcionarioCargo').touched">
-                                                    <span *ngIf="form.get('funcionarioCargo').hasError('required')">Cargo obrigatório</span>
-                                                </small>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="password">Senha</label>
-                                    <input [formControl]="password" class="form-control validation-field password" [type]="passwordType" minlength="6" name="password"
-                                        id="password">
-                                    <div id="senha" (mouseenter)="setTypePassword('text')" (mouseout)="setTypePassword('password')"></div>
-                                    <small class="text-danger" *ngIf="form.get('password').touched">
-                                                                    <span *ngIf="form.get('password').hasError('required')">Senha obrigatória</span>
-                                                                    <span *ngIf="form.get('password').hasError('minlength')">Mínimo 6 caracteres</span>
-                                                                    <span *ngIf="form.get('password').hasError('minlength')">Máximo 20 caracteres</span>
-                                                                </small>
-                                </div>
-                            </div>
-        
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="confirmPassword">Confirme sua Senha</label>
-                                    <input [formControl]="confirmPassword" class="form-control validation-field password" [type]="passwordConfirmType" name="confirmPassword"
-                                        id="confirmPassword">
-                                    <div id="senha" (mouseenter)="setTypePasswordConfirm('text')" (mouseout)="setTypePasswordConfirm('password')"></div>
-                                    <small class="text-danger" *ngIf="form.get('confirmPassword').touched">
-                                                                    <span *ngIf="form.get('confirmPassword').hasError('required')">Confirmação de senha obrigatória</span>
-                                                                    <span *ngIf="form.get('confirmPassword').hasError('mismatchedPasswords')">As senhas não correspondem</span>
-                                                                </small>
-                                </div>
-                            </div>
-                        </div>
-    
-
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <label class="custom-control custom-checkbox">
-                                        <input class="custom-control-input checkbox-primary" type="checkbox" (change)="confirmarTermoUso()">
-                                        <span class="custom-control-indicator"></span>
-                                        <span class="custom-control-description">Ao cadastrar-me, declaro que sou maior de idade e aceito as Políticas de privacidade e os
-                                            <a href="javascript:void(0);" class="transition terms" data-toggle="modal" data-target="#default-modal">Termos e condições do Smarket</a>
-                                        </span>
-                                    </label>
-                                    <small class="text-danger" *ngIf="confirmTermUso.validate &&  !confirmTermUso.status">
-                                        <span>Confirmação do termo de uso obrigatória!</span>
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
-    
-    
-                    <div class="modal fade" id="default-modal" tabindex="-1" role="dialog" aria-labelledby="modal-label" style="display: none;">
-                        <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title" id="modal-label">TERMOS DE SERVIÇO</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                                </div>
-                                <div class="modal-body">
-                                        <div [innerHTML]="termoUso">
-                                            </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="form-group">
-                        <button class="btn btn-block" type="submit">Cadastrar</button>
-                    </div>
-    
-                </form>
-    
-                <div [hidden]="erros.length == 0" *ngFor = "let erro of erros; index as i" class="alert alert-danger" role="alert">
-                    <button type="button" class="close" (click)="closeAlert(i)">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <strong>{{erro.item}}</strong> {{erro.descricao}}
+            <div class='slide2'>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div>
+                    <img class="login-logotipo" src="../../../assets/img/logo/logo-completo-branco.png">
                 </div>
-                
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <h1 class="destaque-white">
+                    SMARKET o mercado que faz toda diferença!
+                </h1>
+            </div>
+            <div class='slide3'>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div>
+                    <img class="login-logotipo" src="../../../assets/img/logo/logo-completo-branco.png">
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <h1 class="destaque-white">
+                    SMARKET o mercado que faz toda diferença!
+                </h1>
             </div>
         </div>
+
+
+        <!-- Div propaganda -->
+        <div class="col-sm-5 offset-sm-1 login-container-formulario text-center">
+            <h2 class="registro">Registre sua LOJA</h2>
+
+            <hr/>
+
+            <a routerLink="/login-consumidor" class="transition">
+                <strong>Já possui cadastro? Faça seu Login!</strong>
+            </a>
+
+            <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="text-left mt-4">
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="razaoSocial">Razão Social</label>
+                            <input [formControl]="razaoSocial" class="form-control validation-field" name="razaoSocial" id="razaoSocial" type="text">
+                            <small class="text-danger" *ngIf="form.get('razaoSocial').touched">
+                                <span *ngIf="form.get('razaoSocial').hasError('required')">Razão Social Obrigatória</span>
+                                <span *ngIf="form.get('razaoSocial').hasError('minlength')">Minimo 3 caracteres</span>
+                                <span *ngIf="form.get('razaoSocial').hasError('maxlength')">Maximo 150 caracteres </span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="nomeFantasia">Nome Fantasia</label>
+                            <input [formControl]="nomeFantasia" class="form-control validation-field" name="nomeFantasia" id="nomeFantasia" type="text">
+                            <small class="text-danger" *ngIf="form.get('nomeFantasia').touched">
+                                <span *ngIf="form.get('nomeFantasia').hasError('required')">Nome Fantasia Obrigatório</span>
+                                <span *ngIf="form.get('nomeFantasia').hasError('minlength')">Minimo 3 caracteres</span>
+                                <span *ngIf="form.get('nomeFantasia').hasError('maxlength')">Maximo 150 caracteres </span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="tipoEstabelecimento">Tipo de Estabelecimento</label>
+                            <select [formControl]="tipoEstabelecimento" name="tipoEstabelecimento" id="tipoEstabelecimento" class="form-control validation-field">
+                                <option value="">Selecione</option>
+                                <option *ngFor="let tipoEstabelecimento of tiposEstabelecimento" [value]="tipoEstabelecimento.tipo_estabelecimento_id">
+                                    {{tipoEstabelecimento.tipo_estabelecimento_descricao}}</option>
+                            </select>
+                            <small class="text-danger" *ngIf="form.get('tipoEstabelecimento').touched">
+                                <span *ngIf="form.get('tipoEstabelecimento').hasError('required')">Tipo de estabelecimento obrigatório</span>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="cnpj">CNPJ</label>
+                            <input [formControl]="cnpj" name="cnpj" id="cnpj" class="form-control validation-field" placeholder="XX.XXX.XXX/XXX-XX" type="text"
+                                specialCharacters="false" mask="00.000.000/0000-00">
+                            <small class="text-danger" *ngIf="form.get('cnpj').touched">
+                                <span *ngIf="form.get('cnpj').hasError('required')">Cnpj obrigatório</span>
+                                <span *ngIf="form.get('cnpj').hasError('invalidCnpj')">Cnpj inválido</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="isncricaoEstadual">Inscrição Estadual</label>
+                            <input [formControl]="inscricaoEstadual" name="inscricaoEstadual" id="inscricaoEstadual" class="form-control validation-field"
+                                type="text">
+                            <small class="text-danger" *ngIf="form.get('inscricaoEstadual').touched">
+                                <span *ngIf="form.get('inscricaoEstadual').hasError('required')">Inscrição estudal obrigatório</span>
+                            </small>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="isncricaoMunicipal">Inscrição Municipal</label>
+                            <input [formControl]="inscricaoMunicipal" name="inscricaoMunicipal" id="inscricaoMunicipal" class="form-control validation-field"
+                                type="text">
+                            <small class="text-danger" *ngIf="form.get('inscricaoMunicipal').touched">
+                                <span *ngIf="form.get('inscricaoMunicipal').hasError('required')">Incrição Municipal Obrigatório</span>
+                            </small>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="cep">Cep</label>
+                            <input [formControl]="cep" name="cep" id="inputCep" class="form-control validation-field cep" type="text" placeholder="XXXXX-XXX"
+                                specialCharacters="false" mask="00000-000">
+                            <div id="cep" (click)="buscarCep()"></div>
+                            <small class="text-danger" *ngIf="form.get('cep').touched">
+                                <span *ngIf="form.get('cep').hasError('required')">Cep obrigatório</span>
+                                <span *ngIf="form.get('cep').hasError('invalidCep')">Cep inválido</span>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <label for="rua">Rua</label>
+                            <input [formControl]="rua" name="rua" id="rua" class="form-control validation-field" type="text">
+                            <small class="text-danger" *ngIf="form.get('rua').touched">
+                                <span *ngIf="form.get('rua').hasError('required')">Rua obrigatório</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label for="numero">Número</label>
+                            <input [formControl]="numero" name="numero" id="numero" class="form-control validation-field" type="text" specialCharacters="false"
+                                mask="0000000000">
+                            <small class="text-danger" *ngIf="form.get('numero').touched">
+                                <span *ngIf="form.get('numero').hasError('required')">Número Obrigatório</span>
+                            </small>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label for="complemento">Complemento</label>
+                            <input [formControl]="complemento" name="complemento" id="complemento" class="form-control validation-field" type="text">
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label for="bairro">Bairro</label>
+                            <input [formControl]="bairro" name="bairro" id="bairro" class="form-control validation-field" type="text">
+                            <small class="text-danger" *ngIf="form.get('bairro').touched">
+                                <span *ngIf="form.get('bairro').hasError('required')">Bairro obrigatório</span>
+                            </small>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="estado">Estado</label>
+                            <select [formControl]="estado" name="estado" id="estado" class="form-control validation-field" (change)="listarCidades()">
+                                <option value="">Selecione</option>
+                                <option *ngFor="let estado of estados" [value]="estado.estado_id">
+                                    {{estado.estado_descricao}}</option>
+                            </select>
+                            <small class="text-danger" *ngIf="form.get('estado').touched">
+                                <span *ngIf="form.get('estado').hasError('required')">Estado obrigatório</span>
+                            </small>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="cidade">Cidades</label>
+                            <select [formControl]="cidade" name="estado" id="cidade" class="form-control validation-field">
+                                <option value="">Selecione</option>
+                                <option *ngFor="let cidade of cidades" [value]="cidade.cidade_id">
+                                    {{cidade.cidade_descricao}}</option>
+                            </select>
+                            <small class="text-danger" *ngIf="form.get('cidade').touched">
+                                <span *ngIf="form.get('cidade').hasError('required')">Cidade obrigatório</span>
+                            </small>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label for="tipoTelefone">Tipo de Telefone</label>
+                            <select [formControl]="tipoTelefone" class="form-control validation-field" name="tipoTelefone" id="tipoTelefone" (change)="setMaskFone()">
+                                <option value="">Selecione</option>
+                                <option *ngFor="let tipoTelefone of tiposTelefone" [value]="tipoTelefone.tipo_telefone_id">
+                                    {{tipoTelefone.tipo_telefone_descricao}}</option>
+                            </select>
+                            <small class="text-danger" *ngIf="form.get('tipoTelefone').touched">
+                                <span *ngIf="form.get('tipoTelefone').hasError('required')">Tipo de telefone obrigatório</span>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="ddd">DDD</label>
+                            <input [formControl]="ddd" name="ddd" id="ddd" class="form-control validation-field" placeholder="(XX)" type="text" specialCharacters="false"
+                                mask="(00)">
+                            <small class="text-danger" *ngIf="form.get('ddd').touched">
+                                <span *ngIf="form.get('ddd').hasError('required')">DDD obrigatório</span>
+                                <span *ngIf="form.get('ddd').hasError('invalidDDD')">DDD inválido</span>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="telefone">Telefone Comercial</label>
+                            <input [formControl]="telefone" class="form-control validation-field" name="telefone" id="telefone" [placeholder]="maskFone.placeholder"
+                                type="text" specialCharacters="false" [mask]="maskFone.mask">
+                            <small class="text-danger" *ngIf="form.get('telefone').touched">
+                                <span *ngIf="form.get('telefone').hasError('required')">Telefone obrigatório</span>
+                                <span *ngIf="form.get('telefone').hasError('invalidTelefone')">Telefone inválido</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="funcionarioEmail">Email Comercial</label>
+                            <input [formControl]="funcionarioEmail" name="funcionarioEmail" id="funcionarioEmail" class="form-control validation-field"
+                                type="text">
+                            <small class="text-danger" *ngIf="form.get('funcionarioEmail').touched">
+                                <span *ngIf="form.get('funcionarioEmail').hasError('required')">Email obrigatório</span>
+                                <span *ngIf="form.get('funcionarioEmail').hasError('invalidEmail')">Email inválido</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="funcionarioNome">Nome</label>
+                            <input [formControl]="funcionarioNome" name="funcionarioNome" id="funcionarioNome" class="form-control validation-field"
+                                placeholder="Nome" type="text">
+                            <small class="text-danger" *ngIf="form.get('funcionarioNome').touched">
+                                <span *ngIf="form.get('funcionarioNome').hasError('required')">Nome obrigatório</span>
+                                <span *ngIf="form.get('funcionarioNome').hasError('minlength')">Minimo 3 caracteres</span>
+                                <span *ngIf="form.get('funcionarioNome').hasError('maxlength')">Máximo 150 caracteres</span>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="funcionarioSobrenome">Sobrenome</label>
+                            <input [formControl]="funcionarioSobrenome" name="funcionarioSobrenome" id="funcionarioSobrenome" class="form-control validation-field"
+                                placeholder="Sobrenome" type="text">
+                            <small class="text-danger" *ngIf="form.get('funcionarioSobrenome').touched">
+                                <span *ngIf="form.get('funcionarioSobrenome').hasError('required')">Sobrenome obrigatório</span>
+                                <span *ngIf="form.get('funcionarioSobrenome').hasError('minlength')">Minimo 3 caracteres</span>
+                                <span *ngIf="form.get('funcionarioSobrenome').hasError('maxlength')">Máximo 150 caracteres</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="ddd">CPF</label>
+                            <input [formControl]="funcionarioCpf" name="funcionarioCpf" id="funcionarioCpf" class="form-control validation-field" placeholder="XXX.XXX.XXX-XX"
+                                type="text" specialCharacters="false" mask="000.000.000-00">
+                            <small class="text-danger" *ngIf="form.get('funcionarioCpf').touched">
+                                <span *ngIf="form.get('funcionarioCpf').hasError('required')">Cpf obrigatório</span>
+                                <span *ngIf="form.get('funcionarioCpf').hasError('invalidCpf')">Cpf inválido</span>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="funcionarioCargo">Cargo</label>
+                            <select [formControl]="funcionarioCargo" name="funcionarioCargo" id="funcionarioCargo" class="form-control validation-field">
+                                <option value="">Cargo</option>
+                                <option *ngFor="let cargo of cargos" [value]="cargo.cargo_id">
+                                    {{cargo.cargo_descricao}}</option>
+                            </select>
+                            <small class="text-danger" *ngIf="form.get('funcionarioCargo').touched">
+                                <span *ngIf="form.get('funcionarioCargo').hasError('required')">Cargo obrigatório</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="password">Senha</label>
+                            <input [formControl]="password" class="form-control validation-field password" [type]="passwordType" minlength="6" name="password"
+                                id="password">
+                            <div id="senha" (mouseenter)="setTypePassword('text')" (mouseout)="setTypePassword('password')"></div>
+                            <small class="text-danger" *ngIf="form.get('password').touched">
+                                <span *ngIf="form.get('password').hasError('required')">Senha obrigatória</span>
+                                <span *ngIf="form.get('password').hasError('minlength')">Mínimo 6 caracteres</span>
+                                <span *ngIf="form.get('password').hasError('minlength')">Máximo 20 caracteres</span>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirme sua Senha</label>
+                            <input [formControl]="confirmPassword" class="form-control validation-field password" [type]="passwordConfirmType" name="confirmPassword"
+                                id="confirmPassword">
+                            <div id="senha" (mouseenter)="setTypePasswordConfirm('text')" (mouseout)="setTypePasswordConfirm('password')"></div>
+                            <small class="text-danger" *ngIf="form.get('confirmPassword').touched">
+                                <span *ngIf="form.get('confirmPassword').hasError('required')">Confirmação de senha obrigatória</span>
+                                <span *ngIf="form.get('confirmPassword').hasError('mismatchedPasswords')">As senhas não correspondem</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="custom-control custom-checkbox">
+                                <input class="custom-control-input checkbox-primary" type="checkbox" (change)="confirmarTermoUso()">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">Ao cadastrar-me, declaro que sou maior de idade e aceito as Políticas de privacidade e os
+                                    <a href="javascript:void(0);" class="transition terms" data-toggle="modal" data-target="#default-modal">Termos e condições do Smarket</a>
+                                </span>
+                            </label>
+                            <small class="text-danger" *ngIf="confirmTermUso.validate &&  !confirmTermUso.status">
+                                <span>Confirmação do termo de uso obrigatória!</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="modal fade" id="default-modal" tabindex="-1" role="dialog" aria-labelledby="modal-label" style="display: none;">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="modal-label">TERMOS DE SERVIÇO</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div [innerHTML]="termoUso">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-block" type="submit">Cadastrar</button>
+                </div>
+
+            </form>
+
+            <div [hidden]="erros.length == 0" *ngFor="let erro of erros; index as i" class="alert alert-danger" role="alert">
+                <button type="button" class="close" (click)="closeAlert(i)">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>{{erro.item}}</strong> {{erro.descricao}}
+            </div>
+
+        </div>
     </div>
-    
-    
-    
+</div>

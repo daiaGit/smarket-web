@@ -10,6 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { PipesModule } from '../../theme/pipes/pipes.module';
+import { LoadingBarModule } from '@ngx-loading-bar/core';
 
 import { ProdutosAdmEditComponent } from './produtos-adm-edit/produtos-adm-edit.component';
 import { ProdutosAdmCreateComponent } from './produtos-adm-create/produtos-adm-create.component';
@@ -33,7 +34,8 @@ export const routes = [
     NgxPaginationModule,
     PipesModule,
     NgxMaskModule,
-    TranslateModule
+    TranslateModule,
+    LoadingBarModule
   ],
   declarations: [
     ProdutosAdmComponent,

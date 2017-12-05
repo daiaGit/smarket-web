@@ -35,5 +35,26 @@ export class IndicativosService {
 			.catch(this.httpUtil.processarErros);
 	}
 
+	getPedidosUltimoMes(): Observable<any[]> {
+		
+				var usuario = JSON.parse(localStorage.getItem('usuarioAdm'));
+		
+				return this.http.get(this.httpUtil.url(this.path) + "getPedidosUltimoMes/" + 2)
+					.map(this.httpUtil.extrairDados)
+					.catch(this.httpUtil.processarErros);
+			}
+
+			getFaturamentoPorEstabelecimento(): Observable<any[]> {
+				
+						var usuario = JSON.parse(localStorage.getItem('usuarioAdm'));
+				
+						return this.http.get(this.httpUtil.url(this.path) + "getFaturamentoPorEstabelecimento/" + 2)
+							.map(this.httpUtil.extrairDados)
+							.catch(this.httpUtil.processarErros);
+					}
+		
+
+			
+
 
 }

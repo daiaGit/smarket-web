@@ -28,7 +28,7 @@
     <div class="col-12 mb-4">
         <div widget class="card border-0 box-shadow">
             <div class="card-header transparent border-0 text-muted">
-                <h5 class="mb-0">Advanced Pie Chart</h5>
+                <h5 class="mb-0">Histório de Faturamento últmos 6 meses</h5>
                 <div class="widget-controls"> 
                     <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
                     <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
@@ -39,7 +39,7 @@
                 <div class="w-100 h-300p">
                     <ngx-charts-advanced-pie-chart
                         [scheme]="colorScheme"
-                        [results]="single"
+                        [results]="ultimosMeses"
                         [gradient]="gradient"
                         (select)="onSelect($event)">
                     </ngx-charts-advanced-pie-chart>       
